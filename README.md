@@ -6,6 +6,12 @@ Repozytorium na konkurs 100 commitów by **devmentors**.
 
 Projekt ma pomagać użytkownikowi zbierać informacje na temat jego finansów i budować podgląd na własne środki pieniężne.
 
+Projektem jest aplikacja mobilna docelowo na system iOS, w kolejnych etapach na Android oraz jako strona internetowa do korzystania na komputerach.
+
+## Technology
+
+Cross-platformowy framework Flutter bazujący na języku programowania Dart.
+
 ## Main functionality:
 
 - podgląd na obecnie trzymane pieniadze, gdzie są przechowywane, jakie narzędzia są wykorzystywane do przechowywania pieniędzy,
