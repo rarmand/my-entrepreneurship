@@ -1,0 +1,1 @@
+ /Users/aleksandraholik/Desktop/my-entrepreneurship/.dart_tool/flutter_gen/gen_l10n/app_localizations_en.dart /Users/aleksandraholik/Desktop/my-entrepreneurship/.dart_tool/flutter_gen/gen_l10n/app_localizations.dart:  /Users/aleksandraholik/Desktop/my-entrepreneurship/l10n.yaml /Users/aleksandraholik/Desktop/my-entrepreneurship/lib/src/localization/app_en.arb
