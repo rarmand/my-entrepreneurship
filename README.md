@@ -12,6 +12,18 @@ Projektem jest aplikacja mobilna docelowo na system iOS, w kolejnych etapach na 
 
 Cross-platformowy framework Flutter bazujący na języku programowania Dart.
 
+State management: BLoC
+https://github.com/felangel/bloc
+
+Inspirations:
+https://github.com/Solido/awesome-flutter?tab=readme-ov-file
+
+Examples of project in general:
+https://www.youtube.com/watch?v=e_A_dBteN9Q
+https://github.com/devmentors/group-flights-ddd
+https://github.com/kgrzybek/modular-monolith-with-ddd\
+
+
 ## Main functionality:
 
 - podgląd na obecnie trzymane pieniadze, gdzie są przechowywane, jakie narzędzia są wykorzystywane do przechowywania pieniędzy,
