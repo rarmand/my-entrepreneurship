@@ -2,38 +2,67 @@
 
 Repozytorium na konkurs 100 commitów by **devmentors**.
 
-## About the project
+## Table of contents
+
+[1. About the project](#1-about-the-project)
+
+[2. Technology](#2-technology)
+
+[3. Main functionality](#3-main-functionality)
+
+[4. Detailed functionality](#4-detailed-functionality)
+
+&nbsp;&nbsp;[4.1 Podgląd na obecnie trzymane pieniądze](#41-podgląd-na-obecnie-trzymane-pieniądze)
+
+&nbsp;&nbsp;[4.2 Badanie budżetu użytkownika](#42-badanie-budżetu-użytkownika)
+
+&nbsp;&nbsp;[4.3 Podgląd na spodziewane zyski](#43-podgląd-na-spodziewane-zyski)
+
+&nbsp;&nbsp;[4.4 Propozycje inwestycji na podstawie podanej kwoty](#44-propozycje-inwestycji-na-podstawie-podanej-kwoty)
+
+[5. Predicted timetable](#5-predicted-timetable)
+
+
+
+## 1. About the project
 
 Projekt ma pomagać użytkownikowi zbierać informacje na temat jego finansów i budować podgląd na własne środki pieniężne.
 
 Projektem jest aplikacja mobilna docelowo na system iOS, w kolejnych etapach na Android oraz jako strona internetowa do korzystania na komputerach.
 
-## Technology
+## 2. Technology
 
 Cross-platformowy framework Flutter bazujący na języku programowania Dart.
 
 State management: BLoC
+
 https://github.com/felangel/bloc
 
 Inspirations:
+
 https://github.com/Solido/awesome-flutter?tab=readme-ov-file
 
 Examples of project in general:
+
 https://www.youtube.com/watch?v=e_A_dBteN9Q
 https://github.com/devmentors/group-flights-ddd
 https://github.com/kgrzybek/modular-monolith-with-ddd\
 
 
-## Main functionality:
+## 3. Main functionality
 
 - podgląd na obecnie trzymane pieniadze, gdzie są przechowywane, jakie narzędzia są wykorzystywane do przechowywania pieniędzy,
 - podgląd na spodziewane zyski z użytych metod oszczędzania i inwestowania,
 - propozycje inwestycji na podstawie podanej kwoty, którą użytkownik dysponuje,
 - badanie budżetu użytkownika,
 
-## Detailed functionality:
+Podstawowa wersja aplikacji ma zapewnić funkcje:
+- wprowadzenia danych o trzymanych pieniądzach i ich obrocie. Funkcja ma dawać podgląd na stan oszczędności oraz porównać stan z wybranym innym punktem czasu.
+- wprowadzenie danych o kosztach i dochodach w ciągu danego okresu. Funkcja ma dawać podgląd na koszty w pewnych okresach czasu oraz porównywać je z kosztami z innych okresów.
 
-### 1. Podgląd na obecnie trzymane pieniądze
+## 4. Detailed functionality
+
+### 4.1 Podgląd na obecnie trzymane pieniądze
 
 Wizualny podgląd na stan oszczędności i inwestycji. 
 
@@ -71,48 +100,7 @@ Przewidziane narzędzia użyte do pracy pieniądzem (akcje, obligacje, ETFy, kry
     - możliwość porównania stanu oszczędności z dwóch wybranych punktów czasu za pomocą wykresów i tabelek.
     - funkcja dostępna, jeśli dane zostały wprowadzone więcej niż raz. 
 
-### 2. Podgląd na spodziewane zyski
-
-Funkcja ma obliczyć i wyświetlić informacje na temat spodziewanych zysków w przypadku narzędzi typu obligacje skarbowe i lokaty.
-
-**Funkcjonalność niepriorytetowa, do dopracowania.**
-
-*W miarę rozwoju aplikacji dodawane będą funkcje obliczania zysków z pozostałych narzędzi (akcje, ETFy, złoto, inne waluty, itd.), nie jest to jednak przewidziane na okres 100 dni.*
-
-- wyświetlenie danych szczegółowych w tabelce:
-    - wysokość kwoty,
-    - wysokość oprocentowania narzędzia,
-    - data rozpoczęcia inwestycji,
-    - data zakończenia inwestycji,
-    - miejsce trzymania środków,
-    - zysk brutto,
-    - zysk netto,
-    - informacja czy trzeba się rozliczyć z zysku w PIT.
-
-Celem funkcjonalności jest zbudowanie informacji pomocnej w dalszych decyzjach o korzystaniu z danego narzędzia, budowaniu opinii na temat narzędzia, jego stabilności i opłacalności.
-
-Przykładowo - porównanie oprocentowania obecnie używanej lokaty z zatwierdzoną stopą procentową, czy oprocentowanie obligacji jest lepsze niż lokata, czy nie lepiej włożyć więcej wysiłku i poszukać czegoś lepszego lub czy zostać przy obecnym.
-
-### 3. Propozycje inwestycji na podstawie podanej kwoty, którą użytkownik dysponuje
-
-Funkcja ma przedstawić propozycje inwestycji na podstawie podanej kwoty użytkownika.
-
-**Funkcjonalność niepriorytetowa, do dopracowania.**
-
-Przygotowane zostaną min. 3 scenariusze (nisko, średnio, i wysokoryzykowne) propozycji przeznaczenia pieniędzy na inwestycje. 
-
-Kryteria:
-- wiek użytkownika,
-- liczba osób do utrzymania,
-- wysokość zarobku miesięcznie,
-- rodzaj umowy o pracę,
-- wysokość podanej kwoty przez użytkownika.
-
-Propozycja będzie się składać z nazwy narzędzia, stopnia ryzyka użycia narzędzia oraz wysokości kwoty do wyznaczenia. 
-
-*W początkowej fazie obliczenia będą wykonywane w algorytmie, za pomocą kilku przygotowanych schematów, w kolejnych fazach przewidziane jest rozbudowanie funkcjonalności.*
-
-### 4. Badanie budżetu użytkownika
+### 4.2 Badanie budżetu użytkownika
 
 Funkcja ma zbierać informacje na temat kosztów stałych, kosztów rocznych, dochodów użytkownika ze źródeł stałych i dodatkowych. 
 
@@ -155,14 +143,48 @@ Funkcja ma zbudować podgląd na sposób zarządzania pieniędzmi przez użytkow
     - funkcja dostępna, jeśli dane zostały wprowadzone więcej niż raz. 
 
 
-## Prioritized functionality
+### 4.3 Podgląd na spodziewane zyski
 
+Funkcja ma obliczyć i wyświetlić informacje na temat spodziewanych zysków w przypadku narzędzi typu obligacje skarbowe i lokaty.
 
-Podstawowa wersja aplikacji ma zapewnić funkcje:
-- wprowadzenia danych o trzymanych pieniądzach i ich obrocie. Funkcja ma dawać podgląd na stan oszczędności oraz porównać stan z wybranym innym punktem czasu.
-- wprowadzenie danych o kosztach i dochodach w ciągu danego okresu. Funkcja ma dawać podgląd na koszty w pewnych okresach czasu oraz porównywać je z kosztami z innych okresów.
+**Funkcjonalność niepriorytetowa, do dopracowania.**
 
-## Predicted timetable:
+*W miarę rozwoju aplikacji dodawane będą funkcje obliczania zysków z pozostałych narzędzi (akcje, ETFy, złoto, inne waluty, itd.), nie jest to jednak przewidziane na okres 100 dni.*
+
+- wyświetlenie danych szczegółowych w tabelce:
+    - wysokość kwoty,
+    - wysokość oprocentowania narzędzia,
+    - data rozpoczęcia inwestycji,
+    - data zakończenia inwestycji,
+    - miejsce trzymania środków,
+    - zysk brutto,
+    - zysk netto,
+    - informacja czy trzeba się rozliczyć z zysku w PIT.
+
+Celem funkcjonalności jest zbudowanie informacji pomocnej w dalszych decyzjach o korzystaniu z danego narzędzia, budowaniu opinii na temat narzędzia, jego stabilności i opłacalności.
+
+Przykładowo - porównanie oprocentowania obecnie używanej lokaty z zatwierdzoną stopą procentową, czy oprocentowanie obligacji jest lepsze niż lokata, czy nie lepiej włożyć więcej wysiłku i poszukać czegoś lepszego lub czy zostać przy obecnym.
+
+### 4.4 Propozycje inwestycji na podstawie podanej kwoty
+
+Funkcja ma przedstawić propozycje inwestycji na podstawie podanej kwoty użytkownika.
+
+**Funkcjonalność niepriorytetowa, do dopracowania.**
+
+Przygotowane zostaną min. 3 scenariusze (nisko, średnio, i wysokoryzykowne) propozycji przeznaczenia pieniędzy na inwestycje. 
+
+Kryteria:
+- wiek użytkownika,
+- liczba osób do utrzymania,
+- wysokość zarobku miesięcznie,
+- rodzaj umowy o pracę,
+- wysokość podanej kwoty przez użytkownika.
+
+Propozycja będzie się składać z nazwy narzędzia, stopnia ryzyka użycia narzędzia oraz wysokości kwoty do wyznaczenia. 
+
+*W początkowej fazie obliczenia będą wykonywane w algorytmie, za pomocą kilku przygotowanych schematów, w kolejnych fazach przewidziane jest rozbudowanie funkcjonalności.*
+
+## 5. Predicted timetable:
 
 1. March:
     - dopracowywanie pomysłów i funkcjonalności,
