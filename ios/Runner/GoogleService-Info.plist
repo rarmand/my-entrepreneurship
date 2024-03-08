@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyBu7fb7-2h3QOUicziCuDfOpFf6rjLZvM4</string>
+	<key>GCM_SENDER_ID</key>
+	<string>975739403574</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.project.myEntrepreneurship</string>
+	<key>PROJECT_ID</key>
+	<string>my-entrepreneurship</string>
+	<key>STORAGE_BUCKET</key>
+	<string>my-entrepreneurship.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:975739403574:ios:b486d6e2668f7c29308797</string>
+	<key>DATABASE_URL</key>
+	<string>https://my-entrepreneurship-default-rtdb.europe-west1.firebasedatabase.app</string>
+</dict>
+</plist>
