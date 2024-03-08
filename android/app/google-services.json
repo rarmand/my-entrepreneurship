@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "975739403574",
+    "firebase_url": "https://my-entrepreneurship-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "my-entrepreneurship",
+    "storage_bucket": "my-entrepreneurship.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:975739403574:android:cb6c4fe138991eff308797",
+        "android_client_info": {
+          "package_name": "com.example.my_entrepreneurship"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBz67q6JdECwq5qQinOR6UDaXa2Bd51jP8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
