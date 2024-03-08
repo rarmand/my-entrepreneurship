@@ -36,9 +36,16 @@ Cross-platformowy framework Flutter bazujący na języku programowania Dart.
 
 State management: BLoC
 
+https://bloclibrary.dev
 https://github.com/felangel/bloc
 
+Database: Firebase
+
+https://firebase.google.com/docs/storage/flutter/start?hl=pl
+
 Inspirations:
+
+- iOS app - Money Coach
 
 https://github.com/Solido/awesome-flutter?tab=readme-ov-file
 
