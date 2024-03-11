@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
-import 'package:my_entrepreneurship/app.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:my_entrepreneurship/app/app.dart';
 import 'firebase_options.dart';
 
 
@@ -11,5 +11,5 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform
   );
   
-  runApp(const FinancesApp());
+  runApp(const App());
 }
