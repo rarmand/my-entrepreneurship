@@ -54,9 +54,19 @@ https://codewithandrea.com/articles/flutter-firebase-flutterfire-cli/
 
 Examples of project in general:
 
-https://www.youtube.com/watch?v=e_A_dBteN9Q
-https://github.com/devmentors/group-flights-ddd
-https://github.com/kgrzybek/modular-monolith-with-ddd\
+From bloc examples:
+
+[News Toolkit Github](https://github.com/flutter/news_toolkit)
+
+[Pinball I/O Github](https://github.com/flutter/pinball)
+
+From devmentors:
+
+[DevMentors video](https://www.youtube.com/watch?v=e_A_dBteN9Q)
+
+[Group Flights Github from DevMentors](https://github.com/devmentors/group-flights-ddd)
+
+[Monolith Github from DevMentors](https://github.com/kgrzybek/modular-monolith-with-ddd\)
 
 
 ## 3. Main functionality
