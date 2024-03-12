@@ -50,6 +50,3 @@ class UserForm extends StatelessWidget {
     );
   }
 }
-
-mixin userFormUsernameLabel {
-}
