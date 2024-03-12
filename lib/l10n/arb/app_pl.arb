@@ -1,3 +1,8 @@
 {
-  "appTitle": "Moje przedsiębiorstwo"
+  "@@locale": "pl",
+  "appTitle": "Moje przedsiębiorstwo",
+  "userFormUsernameLabel": "Podaj nazwę uzytkownika",
+  "userFormBirthdayYearLabel": "Podaj rok urodzenia",
+  "userFormAvgMonthlyIncomeLabel": "Podaj średnią miesięcznego dochodu",
+  "userFormAcceptButton": "Akceptuj"
 }

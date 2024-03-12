@@ -3,5 +3,9 @@
   "appTitle": "My entrepreneurship",
   "@appTitle": {
     "description": "Financial confidence and decision-making"
-  }
+  },
+  "userFormUsernameLabel": "Enter your username",
+  "userFormBirthdayYearLabel": "Enter your birth year",
+  "userFormAvgMonthlyIncomeLabel": "Enter your monthly income",
+  "userFormAcceptButton": "Accept"
 }
