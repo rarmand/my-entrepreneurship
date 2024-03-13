@@ -1,8 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:my_entrepreneurship/l10n/l10n.dart';
 
-class UserForm extends StatelessWidget {
+class UserForm extends StatefulWidget {
   const UserForm({super.key});
+
+  @override
+  State<UserForm> createState() => _UserFormState();
+}
+
+class _UserFormState extends State<UserForm> {
+  final formController = TextEditingController();
+   
+  @override
+  void dispose() {
+    formController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +26,7 @@ class UserForm extends StatelessWidget {
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8), 
           child: TextField(
+            controller: formController,
             decoration: InputDecoration(
               border: OutlineInputBorder(), 
               labelText: AppLocalizations.of(context).userFormUsernameLabel,
@@ -39,11 +53,18 @@ class UserForm extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8), 
-          child: ButtonBar(
-            buttonPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 4), 
-            children: [
-              Text(AppLocalizations.of(context).userFormAcceptButton),
-            ],
+          child: FloatingActionButton(
+            child: const Icon(Icons.text_fields),
+            tooltip: 'Show text',
+            onPressed: () {
+              showDialog(
+              context: context, 
+              builder: (context) {
+                return AlertDialog(
+                  content: Text(formController.text),
+                );
+              });
+            }
           ),
         ),
       ],
