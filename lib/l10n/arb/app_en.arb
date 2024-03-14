@@ -5,7 +5,11 @@
     "description": "Financial confidence and decision-making"
   },
   "userFormUsernameLabel": "Enter your username",
+  "userFormUsernameValidationLabel": "Please enter valid username",
   "userFormBirthdayYearLabel": "Enter your birth year",
+  "userFormBirthdayYearValidationLabel": "Please enter valid birth year",
   "userFormAvgMonthlyIncomeLabel": "Enter your monthly income",
-  "userFormAcceptButton": "Accept"
+  "userFormAvgMonthlyIncomeValidationLabel": "Please enter valid amount",
+  "userFormSubmitButton": "Submit",
+  "userFormProcessingInfo": "Processing..."
 }

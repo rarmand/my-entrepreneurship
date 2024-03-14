@@ -2,7 +2,11 @@
   "@@locale": "pl",
   "appTitle": "Moje przedsiębiorstwo",
   "userFormUsernameLabel": "Podaj nazwę uzytkownika",
+  "userFormUsernameValidationLabel": "Proszę podaj prawidłową nazwę uzytkownika",
   "userFormBirthdayYearLabel": "Podaj rok urodzenia",
+  "userFormBirthdayYearValidationLabel": "Proszę podaj prawidłowy rok urodzenia",
   "userFormAvgMonthlyIncomeLabel": "Podaj średnią miesięcznego dochodu",
-  "userFormAcceptButton": "Akceptuj"
+  "userFormAvgMonthlyIncomeValidationLabel": "Proszę podaj prawidłową wartość",
+  "userFormSubmitButton": "Zatwierdź",
+  "userFormProcessingInfo": "Przesyłanie..."
 }

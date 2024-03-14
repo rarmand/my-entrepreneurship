@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_entrepreneurship/l10n/l10n.dart';
+import 'package:my_entrepreneurship/user_form/views/custom_form_field.dart';
 
 class UserForm extends StatefulWidget {
   const UserForm({super.key});
@@ -9,65 +10,76 @@ class UserForm extends StatefulWidget {
 }
 
 class _UserFormState extends State<UserForm> {
-  final formController = TextEditingController();
-   
-  @override
-  void dispose() {
-    formController.dispose();
-    super.dispose();
-  }
+  final _formKey = GlobalKey<FormState>();
+
+  Widget createInputField(TextEditingController controller, String labelText) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8), 
+        child: TextField(
+          controller: controller,
+          decoration: InputDecoration(
+            border: const OutlineInputBorder(), 
+            labelText: labelText,
+          ),
+        ),
+      );
+    }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8), 
-          child: TextField(
-            controller: formController,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(), 
-              labelText: AppLocalizations.of(context).userFormUsernameLabel,
-            ),
+    return Form(
+      key: _formKey,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          CustomFormField(
+            labelText: AppLocalizations.of(context).userFormUsernameLabel,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return AppLocalizations.of(context).userFormUsernameValidationLabel;
+              }
+              return null;
+            },
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8), 
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(), 
-              labelText: AppLocalizations.of(context).userFormBirthdayYearLabel,
-            ),
+
+          CustomFormField(
+            labelText: AppLocalizations.of(context).userFormBirthdayYearLabel,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return AppLocalizations.of(context).userFormBirthdayYearValidationLabel;
+              }
+              return null;
+            },
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8), 
-          child: TextField(
-            decoration: InputDecoration(
-              border: OutlineInputBorder(), 
-              labelText: AppLocalizations.of(context).userFormAvgMonthlyIncomeLabel,
-            ),
+
+          CustomFormField(
+            labelText: AppLocalizations.of(context).userFormAvgMonthlyIncomeLabel,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return AppLocalizations.of(context).userFormAvgMonthlyIncomeValidationLabel;
+              }
+              return null;
+            },
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 4, vertical: 8), 
-          child: FloatingActionButton(
-            child: const Icon(Icons.text_fields),
-            tooltip: 'Show text',
-            onPressed: () {
-              showDialog(
-              context: context, 
-              builder: (context) {
-                return AlertDialog(
-                  content: Text(formController.text),
-                );
-              });
-            }
+
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8), 
+            child: ElevatedButton(
+              child: Text(AppLocalizations.of(context).userFormSubmitButton),
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(AppLocalizations.of(context).userFormProcessingInfo)
+                    )
+                  );
+                }
+              },
+            )
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
