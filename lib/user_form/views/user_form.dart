@@ -31,7 +31,6 @@ class _UserFormState extends State<UserForm> {
       key: _formKey,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           CustomFormField(
             labelText: AppLocalizations.of(context).userFormUsernameLabel,
@@ -58,6 +57,36 @@ class _UserFormState extends State<UserForm> {
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return AppLocalizations.of(context).userFormAvgMonthlyIncomeValidationLabel;
+              }
+              return null;
+            },
+          ),
+
+          CustomFormField(
+            labelText: AppLocalizations.of(context).userFormIncomeCurrencyLabel,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return AppLocalizations.of(context).userFormIncomeCurrencyValidationLabel;
+              }
+              return null;
+            },
+          ),
+
+          CustomFormField(
+            labelText: AppLocalizations.of(context).userFormIncomeDateLabel,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return AppLocalizations.of(context).userFormIncomeDateValidationLabel;
+              }
+              return null;
+            },
+          ),
+
+          CustomFormField(
+            labelText: AppLocalizations.of(context).userFormFreeAmountLabel,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return AppLocalizations.of(context).userFormFreeAmountValidationLabel;
               }
               return null;
             },

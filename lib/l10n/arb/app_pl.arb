@@ -5,8 +5,14 @@
   "userFormUsernameValidationLabel": "Proszę podaj prawidłową nazwę uzytkownika",
   "userFormBirthdayYearLabel": "Podaj rok urodzenia",
   "userFormBirthdayYearValidationLabel": "Proszę podaj prawidłowy rok urodzenia",
-  "userFormAvgMonthlyIncomeLabel": "Podaj średnią miesięcznego dochodu",
+  "userFormAvgMonthlyIncomeLabel": "Podaj średnią miesięcznego dochodu netto",
   "userFormAvgMonthlyIncomeValidationLabel": "Proszę podaj prawidłową wartość",
+  "userFormIncomeCurrencyLabel": "Podaj walutę",
+  "userFormIncomeCurrencyValidationLabel": "Proszę podaj prawidłową walutę",
+  "userFormIncomeDateLabel": "Data wpłynięcia dochodu",
+  "userFormIncomeDateValidationLabel": "Proszę podaj prawidłową datę",
+  "userFormFreeAmountLabel": "Miesięczna wolna kwota do zaoszczędzenia",
+  "userFormFreeAmountValidationLabel": "Proszę podaj prawidłową kwotę",
   "userFormSubmitButton": "Zatwierdź",
   "userFormProcessingInfo": "Przesyłanie..."
 }

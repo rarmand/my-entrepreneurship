@@ -8,8 +8,14 @@
   "userFormUsernameValidationLabel": "Please enter valid username",
   "userFormBirthdayYearLabel": "Enter your birth year",
   "userFormBirthdayYearValidationLabel": "Please enter valid birth year",
-  "userFormAvgMonthlyIncomeLabel": "Enter your monthly income",
+  "userFormAvgMonthlyIncomeLabel": "Enter your monthly income netto",
   "userFormAvgMonthlyIncomeValidationLabel": "Please enter valid amount",
+  "userFormIncomeCurrencyLabel": "Enter income currency",
+  "userFormIncomeCurrencyValidationLabel": "Please enter valid currency",
+  "userFormIncomeDateLabel": "Date of coming income",
+  "userFormIncomeDateValidationLabel": "Please enter valid date",
+  "userFormFreeAmountLabel": "Monthly free amount to save",
+  "userFormFreeAmountValidationLabel": "Please enter valid amount",
   "userFormSubmitButton": "Submit",
   "userFormProcessingInfo": "Processing..."
 }
