@@ -1,0 +1,3 @@
+class UserFormState {
+  UserFormState();
+}

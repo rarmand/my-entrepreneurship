@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_entrepreneurship/l10n/l10n.dart';
-import 'package:my_entrepreneurship/user_form/views/custom_form_field.dart';
+import 'package:my_entrepreneurship/user_form/widgets/widgets.dart';
 
 class UserForm extends StatefulWidget {
   const UserForm({super.key});
