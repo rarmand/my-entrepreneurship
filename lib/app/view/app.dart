@@ -1,27 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:my_entrepreneurship/home/home.dart';
-import 'package:my_entrepreneurship/l10n/l10n.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_entrepreneurship/app/view/app_view.dart';
+import 'package:my_entrepreneurship/user_form/bloc/user_form_bloc.dart';
+import 'package:user_repository/user_repository.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Portfello',
-      localizationsDelegates: const [
-        AppLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider(create: (context) => UserRepository()),
       ],
-      supportedLocales: AppLocalizations.supportedLocales,
-      initialRoute: '/',
-      routes: <String, WidgetBuilder>{
-        '/': (context) => const HomePage(),
-        '/home': (context) => const HomePage(),
-      },
+
+      child: MultiBlocProvider(
+        providers: [
+          BlocProvider(
+            create: (context) => UserFormBloc(userRepository: RepositoryProvider.of<UserRepository>(context)),
+          ),
+        ],
+      
+        child: const AppView(),
+      )
     );
   }
 }
+
