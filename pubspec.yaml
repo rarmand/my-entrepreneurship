@@ -18,6 +18,8 @@ dependencies:
   flutter_bloc: ^8.1.4
   flutter_localizations:
     sdk: flutter
+  user_repository:
+    path: packages/user_repository
 
 dev_dependencies:
   flutter_test:
