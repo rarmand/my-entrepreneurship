@@ -9,7 +9,6 @@ class AppView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: AppLocalizations.of(context).appTitle,
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -17,11 +16,12 @@ class AppView extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      initialRoute: '/',
-      routes: <String, WidgetBuilder>{
-        '/': (context) => const HomePage(),
-        '/home': (context) => const HomePage(),
-      },
+      home: Scaffold(),
+      // initialRoute: '/',
+      // routes: <String, WidgetBuilder>{
+      //   '/': (context) => const HomePage(),
+      //   '/home': (context) => const HomePage(),
+      // },
     );
   }
 }
