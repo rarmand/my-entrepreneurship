@@ -6,6 +6,7 @@ import 'package:my_entrepreneurship/l10n/l10n.dart';
 class AppView extends StatelessWidget {
   const AppView({super.key});
 
+// TODO: check why i cannot add title with AppLocalizations
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -16,12 +17,11 @@ class AppView extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
-      home: Scaffold(),
-      // initialRoute: '/',
-      // routes: <String, WidgetBuilder>{
-      //   '/': (context) => const HomePage(),
-      //   '/home': (context) => const HomePage(),
-      // },
+      initialRoute: '/',
+      routes: <String, WidgetBuilder>{
+        '/': (context) => const HomePage(),
+        '/home': (context) => const HomePage(),
+      },
     );
   }
 }
