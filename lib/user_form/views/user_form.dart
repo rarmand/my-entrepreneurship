@@ -14,8 +14,6 @@ class UserForm extends StatefulWidget {
 class _UserFormState extends State<UserForm> {
   @override
   Widget build(BuildContext context) {
-    // final formBloc = BlocProvider.of<UserFormBloc>(context);
-
     return Scaffold(
       body: BlocBuilder<UserFormBloc, UserFormState>(
         builder: (context, state) {
@@ -31,7 +29,16 @@ class _UserFormState extends State<UserForm> {
                     CustomFormField(
                       labelText: AppLocalizations.of(context).userFormUsernameLabel,
                       onChanged: (value) {
-                        context.read<UserFormBloc>().usernameChanged(value!);
+                        // use context.read to add events in callbacks
+                        /*
+              context.read<T>() looks up the closest ancestor instance of type T 
+              and is functionally equivalent to BlocProvider.of<T>(context). 
+              
+              context.read is most commonly used for retrieving a bloc instance 
+              in order to add an event within onPressed callbacks.
+                        */
+
+                        context.read<UserFormBloc>().add(UserFormUsernameChanged(value!));
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -41,10 +48,11 @@ class _UserFormState extends State<UserForm> {
                       },
                     ),
 
+                  // TODO: fix to a int field or choose field with year dates
                     CustomFormField(
                       labelText: AppLocalizations.of(context).userFormBirthdayYearLabel,
                       onChanged: (value) {
-                        context.read<UserFormBloc>().birthYearChanged(value!);
+                        context.read<UserFormBloc>().add(UserFormBirthYearChanged(value!));
                       },
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -59,10 +67,7 @@ class _UserFormState extends State<UserForm> {
                       child: ElevatedButton(
                         child: Text(AppLocalizations.of(context).userFormSubmitButton),
                         onPressed: () {
-                        
-                          print('field ${state.username} ${state.birthYear}');
-
-                          // TODO: add event
+                          context.read<UserFormBloc>().add(const UserFormSubmitted());
       
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(

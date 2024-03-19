@@ -39,24 +39,27 @@ part 'user_form_state.dart';
 
 // determines user data and first statistical recommendations
 class UserFormBloc extends Bloc<UserFormEvent, UserFormState>{
-  UserFormBloc(): super(const UserFormState());
+  UserFormBloc(): super(const UserFormState()) {
+    on<UserFormUsernameChanged>(_onUsernameChanged);
+    on<UserFormBirthYearChanged>(_onBirthYearChanged);
+    on<UserFormSubmitted>(_onSubmitted);
+  }
   
-  void usernameChanged(String value) {
-    final String username = (value.isNotEmpty && value.length > 2) ? value : '';
-
+  void _onUsernameChanged(UserFormUsernameChanged event, Emitter<UserFormState> emit) {
+    final String username = (event.username.isNotEmpty && event.username.length > 2) ? event.username : '';
+    
     emit(state.copyWith(
       username: username,
     ));
   }
 
-  void birthYearChanged(String value) {
-    final int birthYear = value.isNotEmpty ? int.parse(value) : -1;
-    emit(state.copyWith(birthYear: birthYear));
+  void _onBirthYearChanged(UserFormBirthYearChanged event, Emitter<UserFormState> emit) {
+    final int birthYear = event.birthYear.isNotEmpty ? int.parse(event.birthYear) : -1;
+
+    emit(state.copyWith(
+      birthYear: birthYear,
+    ));
   }
 
-  // required UserRepository userRepository
-  //  : _userRepository = userRepository,
-  //     super(UserFormState.empty());
-
-  // final UserRepository _userRepository;
+  void _onSubmitted(UserFormSubmitted event, Emitter<UserFormState> emit) {}
 }
