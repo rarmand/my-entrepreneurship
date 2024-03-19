@@ -3,7 +3,6 @@ part of 'user_form_bloc.dart';
 sealed class UserFormEvent {
   const UserFormEvent();
 
-  @override
   List<Object> get props => [];
 }
 
