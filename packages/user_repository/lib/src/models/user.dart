@@ -11,10 +11,10 @@ class User extends Equatable {
     this.birthYear,
     this.avgMonthlyIncome,
     this.incomeCurrency,
-    DateTime? incomeDate,
+    DateTime? incomeRegistrationDate,
     this.freeAmount,
     this.isNewUser = true,
-  }): this.incomeDate = incomeDate ?? DateTime.now();
+  }): this.incomeRegistrationDate = incomeRegistrationDate ?? DateTime.now();
 
   /// The current user's id
   final String id;
@@ -32,7 +32,7 @@ class User extends Equatable {
   final String? incomeCurrency;
   
   /// Date of registered income of the current user for calculations
-  final DateTime? incomeDate;
+  final DateTime? incomeRegistrationDate;
   
   /// The current user's free money amount for calculations
   final double? freeAmount;
@@ -40,10 +40,18 @@ class User extends Equatable {
   /// Whether the current user is a first time user
   final bool isNewUser;
 
-  // static const initial = User(id: '');
+  /// Initial user state which represent user before providing the data
+  static User initial = User(id: '');
 
   @override
   List<Object?> get props => [
-    id, username, birthYear, avgMonthlyIncome, incomeCurrency, incomeDate, freeAmount, isNewUser,
+    id, 
+    username, 
+    birthYear, 
+    avgMonthlyIncome, 
+    incomeCurrency, 
+    incomeRegistrationDate, 
+    freeAmount, 
+    isNewUser,
   ];
 }
