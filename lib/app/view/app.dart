@@ -19,7 +19,7 @@ class App extends StatelessWidget {
       child: MultiBlocProvider(
         providers: [
           BlocProvider(
-            create: (context) => UserFormBloc(), // userRepository: RepositoryProvider.of<UserRepository>(context)),
+            create: (context) => UserFormBloc(userRepository: RepositoryProvider.of<UserRepository>(context)),
           ),
         ],
       

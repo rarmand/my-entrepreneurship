@@ -1,65 +1,55 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:user_repository/user_repository.dart';
+import 'package:uuid/uuid.dart';
 
 part 'user_form_event.dart';
 part 'user_form_state.dart';
 
-// scenario:
-// user is onboarded and he has to put some information about himself
-// they are mandatory, without them application cannot prepare basic information
-// user fills first info to identify him:
-// username
-// birth year
-// income
-// currency
-// date of expected income to bank account
-// free money to invest
-// he submits them and creates first basic data for next operations
+// TODO: determine the flow of creating user profile!!!
 
-// user form is empty
-// user form is filled in 100%
-// user form is validated
-// user form is submitted
-// validation and filling can be checked when user form is submitted
-// if it is not filled and correct, it won't be submitted
+// TODO: determine when and how to create a user id 
+// before user form or with user form
 
-// UserFormEvent - input to the UserFormBloc
-// processed and used to emit new State instances
-//
-// react to events:
-// UserFormSubmitted
-// 
-// UserFormState - output of the UserFormBloc 
-// consumed by the presentation layer
-//
-// states:
-// empty
-// filled
-// submitted
-
-// determines user data and first statistical recommendations
 class UserFormBloc extends Bloc<UserFormEvent, UserFormState>{
-  UserFormBloc(): super(const UserFormState()) {
-    on<UserFormUsernameChanged>(_onUsernameChanged);
-    on<UserFormBirthYearChanged>(_onBirthYearChanged);
+  UserFormBloc({
+    required UserRepository userRepository,
+  }): _userRepository = userRepository, 
+      super(UserFormState.initial()) {
     on<UserFormSubmitted>(_onSubmitted);
+    on<UserFormUpdated>(_onUserFormUpdated);
   }
+
+  final UserRepository _userRepository;
   
-  void _onUsernameChanged(UserFormUsernameChanged event, Emitter<UserFormState> emit) {
-    final String username = (event.username.isNotEmpty && event.username.length > 2) ? event.username : '';
-    
-    emit(state.copyWith(
-      username: username,
-    ));
-  }
+  Future<void> _onUserFormUpdated(UserFormUpdated event, Emitter<UserFormState> emit) async {
+    final userData = event.userData;
 
-  void _onBirthYearChanged(UserFormBirthYearChanged event, Emitter<UserFormState> emit) {
-    final int birthYear = event.birthYear.isNotEmpty ? int.parse(event.birthYear) : -1;
+    print("Bloc ${userData['birthYear'].runtimeType}");
+    User finalUser = User(
+      id: const Uuid().v4(),
+      isNewUser: false,
+      username: userData['username'],
+      birthYear: userData['birthYear'],
+      avgMonthlyIncome: userData['avgMonthlyIncome'],
+      incomeCurrency: userData['incomeCurrency'],
+      incomeRegistrationDate: userData['incomeRegistrationDate'],
+      freeAmount: userData['freeAmount'],
+    );
 
-    emit(state.copyWith(
-      birthYear: birthYear,
-    ));
+    print("User created ${finalUser}");
+
+    emit(state.copyWith(user: finalUser, status: UserFormStatus.userUpdated));
   }
 
   void _onSubmitted(UserFormSubmitted event, Emitter<UserFormState> emit) {}
+
+  // Future<User?> _tryGetUser() async {
+  //   try {
+  //     final user = await _userRepository.getUser();
+  //     return user;
+  //   } catch (_) {
+  //     return null;
+  //   }
+  // }
 }

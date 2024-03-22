@@ -1,24 +1,35 @@
 part of 'user_form_bloc.dart';
 
+enum UserFormStatus {
+  initial, 
+  userUpdated,
+}
+
 class UserFormState extends Equatable {
   const UserFormState({
-    this.username = '', 
-    this.birthYear = -1,
+    required this.status,
+    required this.user,
   });
 
-  final String username;
-  final int birthYear;
+  UserFormState.initial()
+    : this(
+      status: UserFormStatus.initial,
+      user: User.initial,
+    ); 
+
+  final UserFormStatus status;
+  final User user;
 
   @override
-  List<Object?> get props => [username, birthYear];
+  List<Object?> get props => [status, user];
 
   UserFormState copyWith({
-    String? username,
-    int? birthYear,
+    UserFormStatus? status,
+    User? user,
   }) {
     return UserFormState(
-      username: username ?? this.username,
-      birthYear: birthYear ?? this.birthYear,
+      status: status ?? this.status,
+      user: user ?? this.user,
     );
   }
 }
