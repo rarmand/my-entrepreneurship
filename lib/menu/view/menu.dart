@@ -4,16 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:my_entrepreneurship/l10n/l10n.dart';
 
 class Menu extends StatelessWidget {
-  const Menu({super.key});
+  const Menu({
+    super.key,
+    required this.currentIndex, 
+    required this.onTap,
+  });
+
+  final int currentIndex;
+  final ValueSetter<int> onTap; 
 
   @override
   Widget build(BuildContext context) {
-    
+
     return CurvedNavigationBar(
-      backgroundColor: Colors.transparent,
-      buttonBackgroundColor: Colors.black12,
-      color: Colors.black12,
-      animationDuration: const Duration(microseconds: 300),
+      index: currentIndex,
+      onTap: onTap,
       items: <CurvedNavigationBarItem>[
         CurvedNavigationBarItem(
           child: const Icon(Icons.home, size: 26, color: Colors.grey),
@@ -32,6 +37,10 @@ class Menu extends StatelessWidget {
           label: AppLocalizations.of(context).menuBtnUserLabel,
         ),
       ],
+      backgroundColor: Colors.transparent,
+      buttonBackgroundColor: Colors.black12,
+      color: Colors.black12,
+      animationDuration: const Duration(microseconds: 300),
     );
   }
 }
