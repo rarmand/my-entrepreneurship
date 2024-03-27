@@ -31,6 +31,8 @@ class _UserFormState extends State<UserForm> {
   final _formKey = GlobalKey<FormBuilderState>();
   final _pageController = PageController();
   final List<String> currencyOptions = ['PLN', 'USD', 'EUR'];
+  
+  // TODO: czy jest potrzebne 
   final List <String> formKeys = [
       'username',
       'birthYear',
@@ -209,6 +211,7 @@ class _UserFormState extends State<UserForm> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
+                    // if (_pageController.page != 0)
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
                       child: ElevatedButton(
@@ -225,25 +228,32 @@ class _UserFormState extends State<UserForm> {
                       child: ElevatedButton(
                         child: Text(AppLocalizations.of(context).userFormSubmitButton),
                         onPressed: () {
-                          if (_formKey.currentState!.saveAndValidate()) {
-                            print("Test `${_formKey.currentState?.value}");
+                          _formKey.currentState!.save();
+                          
+                          print("Test `${_formKey.currentState?.value}");
                             
-                            if (_formKey.currentState?.value.length == formKeys.length) {
-                              final formData = _formKey.currentState?.value;
-                              
-                              print('Form data ${formData}');
+                          // TODO: how to validate it in other way?
+                          if (_formKey.currentState!.validate()) {
+                            final formData = _formKey.currentState?.instantValue;
+                            
+                            print('Form data ${formData!}');
+                            print('Test type ${_formKey.currentState?.instantValue['birthYear'].runtimeType}');
+                            print('Test type ${_formKey.currentState?.instantValue['freeAmount'].runtimeType}');
+                            print('Test type ${_formKey.currentState?.instantValue['incomeRegistrationDate'].runtimeType}');
 
-                              context.read<UserFormBloc>().add(UserFormSubmitted());
-                              context.read<UserFormBloc>().add(UserFormUpdated(formData!));
-                            }
-
-                            _nextPage();
-                            // ScaffoldMessenger.of(context).showSnackBar(
-                            //   SnackBar(
-                            //     content: Text(AppLocalizations.of(context).userFormProcessingInfo)
-                            //   )
-                            // );
+                            
+                            // ${userData['birthYear'].runtimeType}
+                            context.read<UserFormBloc>().add(UserFormSubmitted());
+                            context.read<UserFormBloc>().add(UserFormUpdated(formData));
                           }
+
+                          _nextPage();
+
+                          // ScaffoldMessenger.of(context).showSnackBar(
+                          //   SnackBar(
+                          //     content: Text(AppLocalizations.of(context).userFormProcessingInfo)
+                          //   )
+                          // );
                         },
                       ),
                     ),

@@ -27,14 +27,14 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState>{
 
     print("Bloc ${userData['birthYear'].runtimeType}");
     User finalUser = User(
-      id: const Uuid().v4(),
-      isNewUser: false,
-      username: userData['username'],
-      birthYear: userData['birthYear'],
-      avgMonthlyIncome: userData['avgMonthlyIncome'],
-      incomeCurrency: userData['incomeCurrency'],
-      incomeRegistrationDate: userData['incomeRegistrationDate'],
-      freeAmount: userData['freeAmount'],
+    id: const Uuid().v4(),
+    isNewUser: false,
+    username: userData['username'],
+    birthYear: userData['birthYear'],
+    avgMonthlyIncome: userData['avgMonthlyIncome'],
+    incomeCurrency: userData['incomeCurrency'],
+    incomeRegistrationDate: userData['incomeRegistrationDate'],
+    freeAmount: userData['freeAmount'],
     );
 
     print("User created ${finalUser}");
