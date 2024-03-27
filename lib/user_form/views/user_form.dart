@@ -66,7 +66,7 @@ class _UserFormState extends State<UserForm> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         CustomTextFormField(
-                          name: formKeys[0],
+                          name: 'username',
                           labelText: AppLocalizations.of(context).userFormUsernameLabel,
                           validator: (value) {
                             // TODO: check if user exists in DB
@@ -78,7 +78,7 @@ class _UserFormState extends State<UserForm> {
                         ),
 
                         CustomTextFormField(
-                          name: formKeys[1],
+                          name: 'birthYear',
                           labelText: AppLocalizations.of(context).userFormBirthdayYearLabel,
                           keyboardType: TextInputType.number,
                           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -110,7 +110,7 @@ class _UserFormState extends State<UserForm> {
                       children: <Widget>[
 
                         CustomTextFormField(
-                          name: formKeys[2],
+                          name: 'avgMonthlyIncome',
                           labelText: AppLocalizations.of(context).userFormAvgMonthlyIncomeLabel,
                           keyboardType: TextInputType.number,
                           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
@@ -133,7 +133,7 @@ class _UserFormState extends State<UserForm> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), 
                           child: FormBuilderDropdown<String>(
-                            name: formKeys[3],
+                            name: 'incomeCurrency',
                             initialValue: currencyOptions[0],
                             items: currencyOptions.map(
                               (curr) => DropdownMenuItem(
@@ -158,7 +158,7 @@ class _UserFormState extends State<UserForm> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4), 
                           child: FormBuilderDateTimePicker(
-                            name: formKeys[4],
+                            name: 'incomeRegistrationDate',
                             initialDate: DateTime.now(),
                             format: formatter,
                             // validator: (value) => {
@@ -175,7 +175,7 @@ class _UserFormState extends State<UserForm> {
                         ),
 
                         CustomTextFormField(
-                          name: formKeys[5],
+                          name: 'freeAmount',
                           labelText: AppLocalizations.of(context).userFormFreeAmountLabel,
                           keyboardType: TextInputType.number,
                           inputFormatters: [FilteringTextInputFormatter.digitsOnly],
