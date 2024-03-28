@@ -248,12 +248,6 @@ class _UserFormState extends State<UserForm> {
                           }
 
                           _nextPage();
-
-                          // ScaffoldMessenger.of(context).showSnackBar(
-                          //   SnackBar(
-                          //     content: Text(AppLocalizations.of(context).userFormProcessingInfo)
-                          //   )
-                          // );
                         },
                       ),
                     ),
