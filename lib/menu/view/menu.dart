@@ -13,6 +13,7 @@ class Menu extends StatelessWidget {
   final int currentIndex;
   final ValueSetter<int> onTap; 
 
+  // TODO: zmienić na standardowy menu z MD
   @override
   Widget build(BuildContext context) {
 
