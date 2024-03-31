@@ -5,6 +5,7 @@
   "menuBtnHomeLabel": "Główna",
   "menuBtnBudgetLabel": "Budżet",
   "menuBtnUserLabel": "Użytkownik",
+  "menuBtnMoreLabel": "Więcej",
   "userFormUsernameLabel": "Nazwa użytkownika",
   "userFormUsernameValidationLabel": "Proszę podaj prawidłową nazwę użytkownika",
   "userFormBirthdayYearLabel": "Rok urodzenia",

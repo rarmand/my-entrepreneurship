@@ -8,6 +8,7 @@
   "menuBtnHomeLabel": "Home",
   "menuBtnBudgetLabel": "Budget",
   "menuBtnUserLabel": "User",
+  "menuBtnMoreLabel": "More",
   "userFormUsernameLabel": "Username",
   "userFormUsernameValidationLabel": "Please enter valid username",
   "userFormBirthdayYearLabel": "Birth year",
