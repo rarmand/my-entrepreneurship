@@ -1,25 +1,65 @@
 part of 'user_form_bloc.dart';
 
-sealed class UserFormEvent {
+// TODO: add documentation
+
+sealed class UserFormEvent extends Equatable {
   const UserFormEvent();
-}
-
-// my events
-// form field changed 
-// form submitted
-// form cancelled somehow
-// e.g. turning off the app
-
-final class UserFormUpdated extends UserFormEvent {
-  const UserFormUpdated(this.userData);
-
-  final Map<String, dynamic> userData;
 
   @override
-  List<Object> get props => [userData];
+  List<Object> get props => [];
 }
 
-final class UserFormSubmitted extends UserFormEvent {}
+final class UserFormUsernameChanged extends UserFormEvent {
+  const UserFormUsernameChanged(this.username);
+
+  final String username;
+
+  @override
+  List<Object> get props => [username];
+}
+
+final class UserFormBirthYearChanged extends UserFormEvent {
+  const UserFormBirthYearChanged(this.birthYear);
+
+  final int birthYear;
+
+  @override
+  List<Object> get props => [birthYear];
+}
+
+final class UserFormAverageMonthlyIncomeChanged extends UserFormEvent {
+  const UserFormAverageMonthlyIncomeChanged(this.avgMonthlyIncome);
+
+  final double avgMonthlyIncome;
+
+  @override
+  List<Object> get props => [avgMonthlyIncome];
+}
+
+final class UserFormIncomeCurrencyChanged extends UserFormEvent {
+  const UserFormIncomeCurrencyChanged(this.incomeCurrency);
+
+  final String incomeCurrency;
+
+  @override
+  List<Object> get props => [incomeCurrency];
+}
+
+final class UserFormFreeAmountChanged extends UserFormEvent {
+  const UserFormFreeAmountChanged(this.freeAmount);
+
+  final double freeAmount;
+
+  @override
+  List<Object> get props => [freeAmount];
+}
 
 // TODO: needs specific definition how to handle this process
-final class UserFormCancelled extends UserFormEvent {}
+final class UserFormSubmitted extends UserFormEvent {
+  const UserFormSubmitted();
+}
+
+// TODO: needs specific definition how to handle this process
+final class UserFormCancelled extends UserFormEvent {
+  const UserFormCancelled();
+}

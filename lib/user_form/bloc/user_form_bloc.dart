@@ -1,10 +1,11 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:user_repository/user_repository.dart';
-import 'package:uuid/uuid.dart';
 
 part 'user_form_event.dart';
 part 'user_form_state.dart';
+
+// TODO: add documentation
 
 // TODO: determine the flow of creating user profile!!!
 
@@ -15,41 +16,39 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState>{
   UserFormBloc({
     required UserRepository userRepository,
   }): _userRepository = userRepository, 
-      super(UserFormState.initial()) {
+      super(const UserFormState.initial()) {
+    on<UserFormUsernameChanged>(_onUserFormUsernameChanged);
+    on<UserFormBirthYearChanged>(_onUserFormBirthYearChanged);
+    on<UserFormAverageMonthlyIncomeChanged>(_onUserFormAverageMonthlyIncomeChanged);
+    on<UserFormIncomeCurrencyChanged>(_onUserFormIncomeCurrencyChanged);
+    on<UserFormFreeAmountChanged>(_onUserFormFreeAmountChanged);
     on<UserFormSubmitted>(_onSubmitted);
-    on<UserFormUpdated>(_onUserFormUpdated);
+    on<UserFormCancelled>(_onCancelled);
   }
 
   final UserRepository _userRepository;
   
-  Future<void> _onUserFormUpdated(UserFormUpdated event, Emitter<UserFormState> emit) async {
-    final userData = event.userData;
+  void _onUserFormUsernameChanged(UserFormUsernameChanged event, Emitter<UserFormState> emit) {
+    emit(state.copyWith(username: event.username, status: UserFormStatus.updated));
+  }
 
-    print("Bloc ${userData['birthYear'].runtimeType}");
-    User finalUser = User(
-    id: const Uuid().v4(),
-    isNewUser: false,
-    username: userData['username'],
-    birthYear: userData['birthYear'],
-    avgMonthlyIncome: userData['avgMonthlyIncome'],
-    incomeCurrency: userData['incomeCurrency'],
-    incomeRegistrationDate: userData['incomeRegistrationDate'],
-    freeAmount: userData['freeAmount'],
-    );
+  void _onUserFormBirthYearChanged(UserFormBirthYearChanged event, Emitter<UserFormState> emit) {
+    emit(state.copyWith(birthYear: event.birthYear, status: UserFormStatus.updated));
+  }
 
-    print("User created ${finalUser}");
+  void _onUserFormAverageMonthlyIncomeChanged(UserFormAverageMonthlyIncomeChanged event, Emitter<UserFormState> emit) {
+    emit(state.copyWith(avgMonthlyIncome: event.avgMonthlyIncome, status: UserFormStatus.updated));
+  }
 
-    emit(state.copyWith(user: finalUser, status: UserFormStatus.userUpdated));
+  void _onUserFormIncomeCurrencyChanged(UserFormIncomeCurrencyChanged event, Emitter<UserFormState> emit) {
+    emit(state.copyWith(incomeCurrency: event.incomeCurrency, status: UserFormStatus.updated));
+  }
+
+  void _onUserFormFreeAmountChanged(UserFormFreeAmountChanged event, Emitter<UserFormState> emit) {
+    emit(state.copyWith(freeAmount: event.freeAmount, status: UserFormStatus.updated));
   }
 
   void _onSubmitted(UserFormSubmitted event, Emitter<UserFormState> emit) {}
 
-  // Future<User?> _tryGetUser() async {
-  //   try {
-  //     final user = await _userRepository.getUser();
-  //     return user;
-  //   } catch (_) {
-  //     return null;
-  //   }
-  // }
+  void _onCancelled(UserFormCancelled event, Emitter<UserFormState> emit) {}
 }
