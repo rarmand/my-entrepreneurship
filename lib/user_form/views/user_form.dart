@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:my_entrepreneurship/constants/constants.dart';
 import 'package:my_entrepreneurship/l10n/l10n.dart';
 import 'package:my_entrepreneurship/user_form/bloc/user_form_bloc.dart';
 
@@ -188,7 +189,12 @@ class _AverageMonthlyIncomeInput extends StatelessWidget {
 class _IncomeCurrencyDropdownButton extends StatelessWidget {
   _IncomeCurrencyDropdownButton();
   
-  final List<String> currencyOptions = ['PLN', 'USD', 'EUR'];
+  final List<String> currencyOptions = [
+    Currency.pln,
+    Currency.eur,
+    Currency.chf,
+    Currency.usd
+  ];
 
   @override
   Widget build(BuildContext context) {
