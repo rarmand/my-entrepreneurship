@@ -48,7 +48,14 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState>{
     emit(state.copyWith(freeAmount: event.freeAmount, status: UserFormStatus.updated));
   }
 
-  void _onSubmitted(UserFormSubmitted event, Emitter<UserFormState> emit) {}
+  void _onSubmitted(UserFormSubmitted event, Emitter<UserFormState> emit) {
+    print(state);
+    // try {
+    //   await _userRepository.saveUser();
+    // } catch (e) {
+    //   // emit(state.)
+    // }
+  }
 
   void _onCancelled(UserFormCancelled event, Emitter<UserFormState> emit) {}
 }

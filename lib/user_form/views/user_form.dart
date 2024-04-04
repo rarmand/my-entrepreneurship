@@ -56,87 +56,26 @@ class _UserFormState extends State<UserForm> {
                     children: <Widget>[
                       const _UsernameInput(),
                       const _BirthYearInput(),
-                      const _AverageMonthlyIncome(),
-                      _IncomeCurrency(),
-                      const _FreeMoneyAmount(),
+                      const _AverageMonthlyIncomeInput(),
+                      _IncomeCurrencyDropdownButton(),
+                      const _FreeMoneyAmountInput(),
                     ],
                   ),
                 ),
               ],
             ),
+            bottomNavigationBar: ElevatedButton(
+              child: Text(AppLocalizations.of(context).userFormSubmitButton),
+              onPressed: () {
+                context.read<UserFormBloc>().add(const UserFormSubmitted());
+              },
+            )
           ),
           ),
         );
       });
   }
 }
-
-                 
-            // bottomNavigationBar: Padding(
-            //   padding: const EdgeInsets.fromLTRB(16, 16, 16, 64), 
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.center,
-            //     children: <Widget>[
-            //       // if (_pageController.page != 0)
-            //       Padding(
-            //         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-            //         child: ElevatedButton(
-            //           child: const Text("Cofnij"),
-            //           onPressed: () {
-            //             _previousPage();
-                      
-            //           },
-            //         ),
-            //       ),
-
-            //       Padding(
-            //         padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-            //         child: ElevatedButton(
-            //           child: Text(AppLocalizations.of(context).userFormSubmitButton),
-            //           onPressed: () {
-            //             // _formKey.currentState!.save();
-                        
-                        // print("Test `${_formKey.currentState?.value}");
-                          
-                        // // TODO: how to validate it in other way?
-                        // if (_formKey.currentState!.validate()) {
-                        //   final formData = _formKey.currentState?.instantValue;
-                          
-                        //   print('Form data ${formData!}');
-                        //   print('Test type ${_formKey.currentState?.instantValue['birthYear'].runtimeType}');
-                        //   print('Test type ${_formKey.currentState?.instantValue['freeAmount'].runtimeType}');
-                        //   print('Test type ${_formKey.currentState?.instantValue['incomeRegistrationDate'].runtimeType}');
-
-                          
-                          // ${userData['birthYear'].runtimeType}
-                          // context.read<UserFormBloc>().add(UserFormSubmitted());
-                          // context.read<UserFormBloc>().add(UserFormUpdated(formData));
-                        // }
-
-            //             // _nextPage();
-            //           },
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
-
-//   void _nextPage() {
-//     _pageController.animateToPage(
-//       _pageController.page!.toInt() + 1,
-//       duration: const Duration(milliseconds: 400),
-//       curve: Curves.easeIn
-//     );
-//   }
-
-//   void _previousPage(){
-//     _pageController.animateToPage(
-//       _pageController.page!.toInt() - 1,
-//       duration: const Duration(milliseconds: 400),
-//       curve: Curves.easeIn
-//     );
-//   }
-// }
 
 class _UsernameInput extends StatelessWidget {
   const _UsernameInput();
@@ -207,8 +146,8 @@ class _BirthYearInput extends StatelessWidget {
   }
 }
 
-class _AverageMonthlyIncome extends StatelessWidget {
-  const _AverageMonthlyIncome();
+class _AverageMonthlyIncomeInput extends StatelessWidget {
+  const _AverageMonthlyIncomeInput();
   
   @override
   Widget build(BuildContext context) {
@@ -246,16 +185,15 @@ class _AverageMonthlyIncome extends StatelessWidget {
   }
 }
 
-class _IncomeCurrency extends StatelessWidget {
-  _IncomeCurrency();
+class _IncomeCurrencyDropdownButton extends StatelessWidget {
+  _IncomeCurrencyDropdownButton();
   
   final List<String> currencyOptions = ['PLN', 'USD', 'EUR'];
 
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField(
-      key: const Key('userForm_incomeCurrency_dropdowntextFormField'),
-      value: currencyOptions[0],
+      key: const Key('userForm_incomeCurrency_dropdownBtnFormField'),
       items: currencyOptions.map(
         (curr) => DropdownMenuItem(
           alignment: AlignmentDirectional.center,
@@ -282,8 +220,8 @@ class _IncomeCurrency extends StatelessWidget {
   }
 }
 
-class _FreeMoneyAmount extends StatelessWidget {
-  const _FreeMoneyAmount();
+class _FreeMoneyAmountInput extends StatelessWidget {
+  const _FreeMoneyAmountInput();
   
   @override
   Widget build(BuildContext context) {
