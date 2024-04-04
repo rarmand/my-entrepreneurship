@@ -18,11 +18,10 @@ class UserForm extends StatefulWidget {
   - posprawdzać typy
   - określić wygląd formularza czy na pewno tak to ma wyglądać
   - uprościć pliki 
-  - przekombinowanie formularza
   - nie działa int.parse dla birthYear
   - walidacja dla datetime 
   - zaplanować tworzenie profilu uzytkownika
-  - potrzebna restrukturyzacja projektu bo zaczynam sie gubic
+  - plan działania gdy formularz jest włączony do edycji juz istniejącego usera
 */
 
 
@@ -37,7 +36,6 @@ class _UserFormState extends State<UserForm> {
 
     // final status = context.select((UserFormBloc bloc) => bloc.state.status);
     // final isNewUser = context.select((UserFormBloc bloc) => bloc.state.status);
-
 
     return BlocBuilder<UserFormBloc, UserFormState>(
       builder: (context, state) {
@@ -79,13 +77,17 @@ class _UserFormState extends State<UserForm> {
 }
 
 class _UsernameInput extends StatelessWidget {
-  const _UsernameInput();
+  const _UsernameInput({
+    this.initialValue = ''
+  });
   
+  final String initialValue;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       key: const Key('userForm_username_textFormField'),
-      initialValue: '',
+      initialValue: initialValue,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return AppLocalizations.of(context).userFormUsernameValidationLabel;
@@ -93,7 +95,9 @@ class _UsernameInput extends StatelessWidget {
         return null;
       },
       onChanged: (value) {
-        context.read<UserFormBloc>().add(UserFormUsernameChanged(value));
+        if (value != initialValue) {
+          context.read<UserFormBloc>().add(UserFormUsernameChanged(value));
+        }
       },
       maxLength: 20,
       maxLines: 1,
@@ -109,15 +113,21 @@ class _UsernameInput extends StatelessWidget {
 }
 
 class _BirthYearInput extends StatelessWidget {
-  const _BirthYearInput();
+  const _BirthYearInput({
+    this.initialValue = '',
+  });
   
+  final String initialValue;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       key: const Key('userForm_birthYear_textFormField'),
-      initialValue: '',
+      initialValue: initialValue,
       onChanged: (value) {
-        context.read<UserFormBloc>().add(UserFormBirthYearChanged(int.tryParse(value) ?? 0));
+        if (value != initialValue) {
+          context.read<UserFormBloc>().add(UserFormBirthYearChanged(int.tryParse(value) ?? 0));
+        }
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -148,15 +158,21 @@ class _BirthYearInput extends StatelessWidget {
 }
 
 class _AverageMonthlyIncomeInput extends StatelessWidget {
-  const _AverageMonthlyIncomeInput();
+  const _AverageMonthlyIncomeInput({
+    this.initialValue = '',
+  });
   
+  final String initialValue;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       key: const Key('userForm_avgMonthlyIncome_textFormField'),
-      initialValue: '',
+      initialValue: initialValue,
       onChanged: (value) {
-        context.read<UserFormBloc>().add(UserFormAverageMonthlyIncomeChanged(double.tryParse(value) ?? 0.0));
+        if (value != initialValue) {
+          context.read<UserFormBloc>().add(UserFormAverageMonthlyIncomeChanged(double.tryParse(value) ?? 0.0));
+        }
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -186,9 +202,14 @@ class _AverageMonthlyIncomeInput extends StatelessWidget {
   }
 }
 
+// TODO: wycentrować
+// dodać reakcję gdy istnieje initial value - błąd mówi, ze dana powtarza sie dwa razy?
 class _IncomeCurrencyDropdownButton extends StatelessWidget {
-  _IncomeCurrencyDropdownButton();
+  _IncomeCurrencyDropdownButton({
+    this.initialValue = '',
+  });
   
+  final String initialValue;
   final List<String> currencyOptions = [
     Currency.pln,
     Currency.eur,
@@ -227,15 +248,23 @@ class _IncomeCurrencyDropdownButton extends StatelessWidget {
 }
 
 class _FreeMoneyAmountInput extends StatelessWidget {
-  const _FreeMoneyAmountInput();
+  const _FreeMoneyAmountInput({
+      this.initialValue = '',
+  });
   
+  final String initialValue;
+
   @override
   Widget build(BuildContext context) {
+    final double avgMonthlyIncome = context.select((UserFormBloc bloc) => bloc.state.avgMonthlyIncome);
+
     return TextFormField(
       key: const Key('userForm_freeMoneyAmount_textFormField'),
-      initialValue: '',
+      initialValue: initialValue,
       onChanged: (value) {
-        context.read<UserFormBloc>().add(UserFormFreeAmountChanged(double.tryParse(value) ?? 0.0));
+        if (value != initialValue) {
+          context.read<UserFormBloc>().add(UserFormFreeAmountChanged(double.tryParse(value) ?? 0.0));
+        }
       },
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -247,11 +276,10 @@ class _FreeMoneyAmountInput extends StatelessWidget {
         if (freeAmount < 1.0) {
           return AppLocalizations.of(context).userFormFreeAmountValidationLabel;
         }
-        // var income = _formKey.currentState?.value['avgMonthlyIncome'] ?? 0.0;                            
 
-        // if (income > 0 && freeAmount > income) {
-        //   return AppLocalizations.of(context).userFormFreeAmountValidationLabel;
-        // }
+        if (avgMonthlyIncome > 0 && freeAmount > avgMonthlyIncome) {
+          return AppLocalizations.of(context).userFormFreeAmountValidationLabel;
+        }
 
         return null;
       },
