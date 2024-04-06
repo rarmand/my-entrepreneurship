@@ -1,45 +1,43 @@
 part of 'user_form_bloc.dart';
 
 // TODO: add documentation
-// TODO: wonder deeper the flow of creation and futher work with user form state
 
 enum UserFormStatus {
   initial, 
   updated,
+  loading,
   submitted,
+  failed,
   cancelled
 }
 
 final class UserFormState extends Equatable {
   const UserFormState({
-    required this.status,
-    required this.username,
-    required this.birthYear,
-    required this.avgMonthlyIncome,
-    required this.incomeCurrency,
-    required this.freeAmount,
+    this.status = UserFormStatus.initial,
+    this.initialUser,
+    this.username = '',
+    this.birthYear = 0,
+    this.avgMonthlyIncome = 0,
+    this.incomeCurrency = '',
+    this.freeAmount = 0,
   });
 
-  const UserFormState.initial()
-    : this(
-      status: UserFormStatus.initial,
-      username: '',
-      birthYear: 0,
-      avgMonthlyIncome: 0,
-      incomeCurrency: '',
-      freeAmount: 0,
-    ); 
-
   final UserFormStatus status;
+
+  final User? initialUser;
+
   final String username;
   final int birthYear;
   final double avgMonthlyIncome;
   final String incomeCurrency;
   final double freeAmount;
 
+  bool get isNewUser => initialUser == null;
+
   @override
   List<Object?> get props => [
     status,
+    initialUser,
     username,
     birthYear,
     avgMonthlyIncome,
@@ -49,6 +47,7 @@ final class UserFormState extends Equatable {
 
   UserFormState copyWith({
     UserFormStatus? status,
+    User? initialUser,
     String? username,
     int? birthYear,
     double? avgMonthlyIncome,
@@ -57,6 +56,7 @@ final class UserFormState extends Equatable {
   }) {
     return UserFormState(
       status: status ?? this.status,
+      initialUser: initialUser ?? this.initialUser,
       username: username ?? this.username,
       birthYear: birthYear ?? this.birthYear,
       avgMonthlyIncome: avgMonthlyIncome ?? this.avgMonthlyIncome,

@@ -18,6 +18,7 @@ class App extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) => UserFormBloc(
+              initialUser: User(),
               userRepository: RepositoryProvider.of<UserRepository>(context)
             ),
           ),
