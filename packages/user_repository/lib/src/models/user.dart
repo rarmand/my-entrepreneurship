@@ -51,6 +51,24 @@ class User extends Equatable {
   /// The current user's free money amount for calculations
   final double? freeAmount;
 
+  User copyWith({
+    String? id,
+    String? username,
+    int? birthYear,
+    double? avgMonthlyIncome,
+    String? incomeCurrency,
+    double? freeAmount,
+  }) {
+    return User(
+      id: id ?? this.id,
+      username: username ?? this.username,
+      birthYear: birthYear ?? this.birthYear,
+      avgMonthlyIncome: avgMonthlyIncome ?? this.avgMonthlyIncome,
+      incomeCurrency: incomeCurrency ?? this.incomeCurrency,
+      freeAmount: freeAmount ?? this.freeAmount,
+    );
+  }
+
   @override
   List<Object?> get props => [
     id, 
