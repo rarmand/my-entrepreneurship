@@ -6,7 +6,9 @@ part 'user_form_event.dart';
 part 'user_form_state.dart';
 
 // TODO: add documentation
+// TODO: weryfikacja jak form pracuje dla juz istniejacego usera
 
+// czy funkcja userrepository.getUser zadziała zamiast tworzenia usera
 class UserFormBloc extends Bloc<UserFormEvent, UserFormState>{
   UserFormBloc({
     required UserRepository userRepository,
@@ -54,11 +56,7 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState>{
   Future<void> _onSubmitted(UserFormSubmitted event, Emitter<UserFormState> emit) async {
     emit(state.copyWith(status: UserFormStatus.loading));
 
-    print(state);
-
-    // TODO: jak działa to tworzenie nowego uzytkownika?
-    // cos nie pasuje z ID
-    final user = state.initialUser ?? User(
+    final User user = (state.initialUser ?? User()).copyWith(
       username: state.username,
       birthYear: state.birthYear,
       avgMonthlyIncome: state.avgMonthlyIncome,
@@ -68,15 +66,16 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState>{
 
     try {
       await _userRepository.saveUser(user);
-      print('works');
+
       emit(state.copyWith(status: UserFormStatus.submitted));
     } catch (e) {
-      print('doesnt work');
       emit(state.copyWith(status: UserFormStatus.failed));
     }
   }
 
   void _onCancelled(UserFormCancelled event, Emitter<UserFormState> emit) {
+    // TODO: czy save danych?
+
     emit(state.copyWith(status: UserFormStatus.cancelled));
   }
 }

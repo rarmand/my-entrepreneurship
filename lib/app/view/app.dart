@@ -16,6 +16,8 @@ class App extends StatelessWidget {
 
       child: MultiBlocProvider(
         providers: [
+          // TODO: dodac połączenie z firebase
+          // gdzie ustalany user?
           BlocProvider(
             create: (context) => UserFormBloc(
               initialUser: User(),
