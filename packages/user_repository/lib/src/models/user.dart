@@ -1,22 +1,36 @@
 import 'package:equatable/equatable.dart';
+import 'package:uuid/uuid.dart';
 
 /// {@template user}
 /// User model
+/// 
+/// Contains a, [id], [username], [birthYear], 
+/// [avgMonthlyIncome], [incomeCurrency], [freeAmount] fields.
+/// 
+/// If an [id] is provided, it cannot be empty. If no [id] is provided, one
+/// will be generated.
+/// 
 /// {@endtemplate}
 class User extends Equatable {
   /// {@macro user}
   User({
-    required this.id,
+    String? id,
     this.username,
     this.birthYear,
     this.avgMonthlyIncome,
     this.incomeCurrency,
     DateTime? incomeRegistrationDate,
     this.freeAmount,
-    this.isNewUser = true,
-  }): this.incomeRegistrationDate = incomeRegistrationDate ?? DateTime.now();
+  }): assert(
+        id == null || id.isNotEmpty,
+        'id must either be null or not empty',
+      ),
+      id = id ?? const Uuid().v4(),
+      incomeRegistrationDate = incomeRegistrationDate ?? DateTime.now();
 
-  /// The current user's id
+  /// The identifier of the `user`
+  /// 
+  /// Cannot be empty
   final String id;
 
   /// The current user's username (display name)
@@ -37,12 +51,6 @@ class User extends Equatable {
   /// The current user's free money amount for calculations
   final double? freeAmount;
 
-  /// Whether the current user is a first time user
-  final bool isNewUser;
-
-  /// Initial user state which represent user before providing the data
-  static User initial = User(id: '');
-
   @override
   List<Object?> get props => [
     id, 
@@ -52,6 +60,5 @@ class User extends Equatable {
     incomeCurrency, 
     incomeRegistrationDate, 
     freeAmount, 
-    isNewUser,
   ];
 }
