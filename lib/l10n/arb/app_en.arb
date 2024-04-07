@@ -9,6 +9,7 @@
   "menuBtnBudgetLabel": "Budget",
   "menuBtnUserLabel": "User",
   "menuBtnMoreLabel": "More",
+  "userFormTitle": "Form of user data",
   "userFormUsernameLabel": "Username",
   "userFormUsernameValidationLabel": "Please enter valid username",
   "userFormBirthdayYearLabel": "Birth year",
