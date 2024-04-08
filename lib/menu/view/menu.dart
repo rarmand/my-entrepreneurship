@@ -40,13 +40,6 @@ class Menu extends StatelessWidget {
         //   label: AppLocalizations.of(context).menuBtnMoreLabel,
         // ),
       ],
-      backgroundColor: Colors.transparent,
-      selectedItemColor: Colors.black,
-      unselectedItemColor: Colors.grey,
-      selectedLabelStyle: const TextStyle(color: Colors.black),
-      unselectedLabelStyle: const TextStyle(color: Colors.black45),
-      selectedFontSize: 12,
-      unselectedFontSize: 12,
     );
   }
 }
