@@ -18,47 +18,32 @@ class AppTheme {
     return ThemeData(
       colorScheme: ColorScheme.fromSeed(
         seedColor: ColorConstants.lightBlue,
+      ).copyWith(
+        surface: ColorConstants.lightBlack, // kolor tła pod elementami, AppBar
+        onSurface: ColorConstants.cream, // wszystko co na głównym tle
+        background: Colors.teal,  // kolor
+        onBackground: Colors.black, // to co na backgroundzie
+        // primary: Colors.green, // kolor czcionki
+        error: Colors.purple,
       ),
-      brightness: Brightness.light,
-      useMaterial3: true,
-
-      textTheme: const TextTheme(
-
-      ),
-      iconTheme: IconThemeData(
-        color: ColorConstants.black,
-        size: 24,
-      ),
-
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: ColorConstants.lightBlue,
-        selectedItemColor: ColorConstants.blue,
-        unselectedItemColor: ColorConstants.black,
-        selectedLabelStyle: const TextStyle(
-          fontSize: 12,
-        ),
-        unselectedLabelStyle: const TextStyle(
-          fontSize: 12,
-        ),
-      ),
+      
+      // bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        // backgroundColor: ColorConstants.lightBlue,
+        // selectedItemColor: ColorConstants.blue,
+        // unselectedItemColor: ColorConstants.black,
+        // selectedLabelStyle: const TextStyle(
+        //   fontSize: 12,
+        // ),
+        // unselectedLabelStyle: const TextStyle(
+        //   fontSize: 12,
+        // ),
+      // ),
     );
   }
 
   static ThemeData get dark {
     return ThemeData(
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: Colors.white,
-        brightness: Brightness.dark,
-      ),
-      useMaterial3: true,
-
-      textTheme: const TextTheme(
-        
-      ),
-      iconTheme: const IconThemeData(
-        color: Color.fromARGB(255, 232, 230, 230),
-        size: 24,
-      ),
+      // useMaterial3: true,
     );
   }
 }
