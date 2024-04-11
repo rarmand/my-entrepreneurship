@@ -23,5 +23,6 @@
   "userFormFreeAmountLabel": "Monthly free amount to save",
   "userFormFreeAmountValidationLabel": "Please enter valid amount",
   "userFormSubmitButton": "Submit",
-  "userFormProcessingInfo": "Processing..."
+  "userFormProcessingInfo": "Processing...",
+  "userProfileTitle": "User profile"
 }

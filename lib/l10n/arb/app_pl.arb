@@ -20,5 +20,6 @@
   "userFormFreeAmountLabel": "Miesięczna wolna kwota do zaoszczędzenia",
   "userFormFreeAmountValidationLabel": "Proszę podaj prawidłową kwotę",
   "userFormSubmitButton": "Zatwierdź",
-  "userFormProcessingInfo": "Przesyłanie..."
+  "userFormProcessingInfo": "Przesyłanie...",
+  "userProfileTitle": "Profil użytkownika"
 }
