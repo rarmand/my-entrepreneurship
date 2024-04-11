@@ -35,8 +35,8 @@ class BaseView extends StatelessWidget {
           ],
         ),
         bottomNavigationBar: Menu(
-          currentIndex: selectedPageIndex, 
-          onTap: (value) => context.read<BaseCubit>().setPageIndex(value),
+          selectedIndex: selectedPageIndex, 
+          onDestinationSelected: (value) => context.read<BaseCubit>().setPageIndex(value),
         ),
       ),
     );

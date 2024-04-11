@@ -16,28 +16,27 @@ class ColorConstants {
 class AppTheme {
   static ThemeData get light {
     return ThemeData(
-      colorScheme: ColorScheme.fromSeed(
-        seedColor: ColorConstants.lightBlue,
-      ).copyWith(
-        surface: ColorConstants.lightBlack, // kolor tła pod elementami, AppBar
-        onSurface: ColorConstants.cream, // wszystko co na głównym tle
-        background: Colors.teal,  // kolor
-        onBackground: Colors.black, // to co na backgroundzie
-        // primary: Colors.green, // kolor czcionki
-        error: Colors.purple,
+      primaryColor: Colors.teal,
+      iconTheme: IconThemeData(
+        size: 24.0,
+        color: ColorConstants.cream,
       ),
-      
-      // bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        // backgroundColor: ColorConstants.lightBlue,
-        // selectedItemColor: ColorConstants.blue,
-        // unselectedItemColor: ColorConstants.black,
-        // selectedLabelStyle: const TextStyle(
-        //   fontSize: 12,
-        // ),
-        // unselectedLabelStyle: const TextStyle(
-        //   fontSize: 12,
-        // ),
+      // colorScheme: ColorScheme.fromSeed(
+      //   seedColor: ColorConstants.lightBlue,
+      // ).copyWith(
+      //   surface: ColorConstants.lightBlack, // kolor tła pod elementami, AppBar
+      //   onSurface: ColorConstants.cream, // wszystko co na głównym tle
+      //   background: Colors.teal,  // kolor
+      //   onBackground: Colors.black, // to co na backgroundzie
+      //   // primary: Colors.green, // kolor czcionki
+      //   error: Colors.purple,
       // ),
+      
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: ColorConstants.white,
+        // indicatorColor: ColorConstants.beige,
+      
+      ),
     );
   }
 
