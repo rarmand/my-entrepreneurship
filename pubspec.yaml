@@ -19,6 +19,7 @@ dependencies:
   flutter_form_builder: ^9.2.1
   flutter_localizations:
     sdk: flutter
+  google_fonts: ^6.2.1
   intl: ^0.18.1
   user_repository:
     path: packages/user_repository

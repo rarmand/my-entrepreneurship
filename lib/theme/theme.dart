@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ColorConstants {
   static Color black = const Color.fromARGB(255, 25, 36, 40);
@@ -31,7 +32,14 @@ class AppTheme {
       //   // primary: Colors.green, // kolor czcionki
       //   error: Colors.purple,
       // ),
-      
+      textTheme: TextTheme(
+        titleLarge: GoogleFonts.charmonman(
+          fontSize: 20,
+        ), //ephesis
+        bodyMedium: GoogleFonts.carlito(
+          fontSize: 18,
+        ),// merriweather
+      ),
       navigationBarTheme: NavigationBarThemeData(
         backgroundColor: ColorConstants.white,
         // indicatorColor: ColorConstants.beige,
