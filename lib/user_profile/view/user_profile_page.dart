@@ -19,7 +19,7 @@ class UserProfilePage extends StatelessWidget {
         actions: [
           IconButton(
             icon: Icon(isViewDark ? Icons.light_mode : Icons.dark_mode),
-            tooltip: "Change view mode",
+            tooltip: AppLocalizations.of(context).userProfileActionChangeModeTooltip,
             onPressed: () {
               // TODO: change view mode
               // TODO: change theme set
@@ -27,7 +27,7 @@ class UserProfilePage extends StatelessWidget {
           ),
           IconButton(
             icon: const Icon(Icons.edit),
-            tooltip: "Edit profile",
+            tooltip: AppLocalizations.of(context).userProfileActionEditProfileTooltip,
             onPressed: () {
               // TODO: navigate to edition profile view
               // TODO: change theme set
@@ -54,15 +54,15 @@ class UserProfilePage extends StatelessWidget {
                       initialValue: "James Anderson",
                       readOnly: true,
                       enableSuggestions: false,
-                      decoration: const InputDecoration(
-                        helperText: "Username",
-                        enabledBorder: UnderlineInputBorder(
+                      decoration: InputDecoration(
+                        helperText: AppLocalizations.of(context).userProfileUsernameHelperText,
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        border: UnderlineInputBorder(
+                        border: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
                       ),
@@ -73,15 +73,15 @@ class UserProfilePage extends StatelessWidget {
                       initialValue: "1999",
                       readOnly: true,
                       enableSuggestions: false,
-                      decoration: const InputDecoration(
-                        helperText: "Birth year",
-                        enabledBorder: UnderlineInputBorder(
+                      decoration: InputDecoration(
+                        helperText: AppLocalizations.of(context).userProfileBirthYearHelperText,
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        border: UnderlineInputBorder(
+                        border: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
                       ),
@@ -91,15 +91,15 @@ class UserProfilePage extends StatelessWidget {
                       initialValue: "8000 PLN",
                       readOnly: true,
                       enableSuggestions: false,
-                      decoration: const InputDecoration(
-                        helperText: "Average income",
-                        enabledBorder: UnderlineInputBorder(
+                      decoration: InputDecoration(
+                        helperText: AppLocalizations.of(context).userProfileAverageIncomeHelperText,
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        border: UnderlineInputBorder(
+                        border: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
                       ),
@@ -109,15 +109,15 @@ class UserProfilePage extends StatelessWidget {
                       initialValue: "2000 PLN",
                       readOnly: true,
                       enableSuggestions: false,
-                      decoration: const InputDecoration(
-                        helperText: "Free amount",
-                        enabledBorder: UnderlineInputBorder(
+                      decoration: InputDecoration(
+                        helperText: AppLocalizations.of(context).userProfileFreeCapitalHelperText,
+                        enabledBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        focusedBorder: UnderlineInputBorder(
+                        focusedBorder: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
-                        border: UnderlineInputBorder(
+                        border: const UnderlineInputBorder(
                           borderSide: BorderSide(color: Colors.black),
                         ),
                       ),
