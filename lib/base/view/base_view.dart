@@ -24,7 +24,6 @@ class BaseView extends StatelessWidget {
         )
       ], 
       child: Scaffold(
-        appBar: AppBar(title: Text(AppLocalizations.of(context).appTitle)),
         body: IndexedStack(
           index: selectedPageIndex,
           children: const [

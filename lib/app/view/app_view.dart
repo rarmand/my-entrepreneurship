@@ -19,6 +19,7 @@ class AppView extends StatelessWidget {
         GlobalCupertinoLocalizations.delegate,
       ],
       supportedLocales: AppLocalizations.supportedLocales,
+      title: "Business Insider",
       home: const Base(),
     );
   }
