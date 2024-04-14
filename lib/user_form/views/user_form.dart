@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:my_entrepreneurship/constants/constants.dart';
 import 'package:my_entrepreneurship/l10n/l10n.dart';
 import 'package:my_entrepreneurship/user_form/bloc/user_form_bloc.dart';
@@ -14,20 +13,16 @@ class UserForm extends StatefulWidget {
 }
 
 /*
+TODO:
+  - po usunięciu forma nie działa walidacja - poprawić to bagno
   - posprawdzać walidację wszystkich pól
-  - posprawdzać typy
-  - określić wygląd formularza czy na pewno tak to ma wyglądać
-  - uprościć pliki 
-  - nie działa int.parse dla birthYear
   - walidacja dla datetime 
-  - zaplanować tworzenie profilu uzytkownika
   - plan działania gdy formularz jest włączony do edycji juz istniejącego usera
 */
 
 
 class _UserFormState extends State<UserForm> {
-  final _formKey = GlobalKey<FormBuilderState>();
-  final _pageController = PageController();  
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -39,74 +34,86 @@ class _UserFormState extends State<UserForm> {
 
     return BlocBuilder<UserFormBloc, UserFormState>(
       builder: (context, state) {
-        return Scaffold(
-          body: FormBuilder(
+        return Form(
           key: _formKey,
-          autovalidateMode: AutovalidateMode.onUserInteraction,
+          // autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Scaffold(
-            body: PageView(
-              physics: const NeverScrollableScrollPhysics(),
-              pageSnapping: false,
-              controller: _pageController,
-              children: [
-                Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      const _UsernameInput(),
-                      const _BirthYearInput(),
-                      const _AverageMonthlyIncomeInput(),
-                      _IncomeCurrencyDropdownButton(),
-                      const _FreeMoneyAmountInput(),
-                    ],
-                  ),
-                ),
-              ],
+            appBar: AppBar(
+              leading: IconButton(
+                tooltip: AppLocalizations.of(context).userFormActionCancelTooltip,
+                onPressed: () {
+                  context.read<UserFormBloc>().add(const UserFormCancelled());
+                },
+                icon: const Icon(Icons.close),
+              ),
+              title: Text(AppLocalizations.of(context).userFormTitle),
             ),
-            bottomNavigationBar: ElevatedButton(
-              child: Text(AppLocalizations.of(context).userFormSubmitButton),
-              onPressed: () {
-                context.read<UserFormBloc>().add(const UserFormSubmitted());
-              },
-            )
-          ),
-          ),
+            extendBody: true,
+            body: const SingleChildScrollView(
+              physics: NeverScrollableScrollPhysics(),
+              child: Padding(
+                padding: EdgeInsets.all(24),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    _UsernameInput(),
+                    _BirthYearInput(),
+                    _AverageIncomeInput(),
+                    _FreeCapitalInput(),
+                  ],
+                ),
+              ),
+            ),
+            bottomNavigationBar: Padding(
+              padding: const EdgeInsets.all(20),
+              child: _SubmitButton(_formKey),
+            ),
+          ), 
         );
-      });
+      }
+    );
   }
 }
 
 class _UsernameInput extends StatelessWidget {
   const _UsernameInput({
-    this.initialValue = ''
+    this.initialValue
   });
   
-  final String initialValue;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      key: const Key('userForm_username_textFormField'),
-      initialValue: initialValue,
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return AppLocalizations.of(context).userFormUsernameValidationLabel;
-        }
-        return null;
-      },
-      onChanged: (value) {
-        if (value != initialValue) {
-          context.read<UserFormBloc>().add(UserFormUsernameChanged(value));
-        }
-      },
-      maxLength: 20,
-      maxLines: 1,
-      textAlign: TextAlign.center,
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(), 
-        labelText: AppLocalizations.of(context).userFormUsernameLabel,
-        filled: true,
-        fillColor: Colors.white,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0) , 
+      child: TextFormField(
+        key: const Key('userForm_username_textFormField'),
+        initialValue: initialValue,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return AppLocalizations.of(context).userFormUsernameValidationLabel;
+          }
+          return null;
+        },
+        onChanged: (value) {
+          if (value != initialValue) {
+            context.read<UserFormBloc>().add(UserFormUsernameChanged(value));
+          }
+        },
+        maxLength: 20,
+        maxLines: 1,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          counterText: "",
+          border: const UnderlineInputBorder(), 
+          labelText: AppLocalizations.of(context).userFormUsernameLabel,
+          hintText: '',
+          hintStyle: const TextStyle(
+            height: 2.0,
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
       ),
     );
   }
@@ -114,102 +121,214 @@ class _UsernameInput extends StatelessWidget {
 
 class _BirthYearInput extends StatelessWidget {
   const _BirthYearInput({
-    this.initialValue = '',
+    this.initialValue,
   });
   
-  final String initialValue;
+  final String? initialValue;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      key: const Key('userForm_birthYear_textFormField'),
-      initialValue: initialValue,
-      onChanged: (value) {
-        if (value != initialValue) {
-          context.read<UserFormBloc>().add(UserFormBirthYearChanged(int.tryParse(value) ?? 0));
-        }
-      },
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return AppLocalizations.of(context).userFormBirthdayYearValidationLabel;
-        }
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0) , 
+      child: TextFormField(
+        key: const Key('userForm_birthYear_textFormField'),
+        initialValue: initialValue,
+        onChanged: (value) {
+          if (value != initialValue) {
+            context.read<UserFormBloc>().add(UserFormBirthYearChanged(int.tryParse(value) ?? 0));
+          }
+        },
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return AppLocalizations.of(context).userFormBirthYearValidationLabel;
+          }
 
-        int birthYear = int.tryParse(value) ?? 0;
+          int birthYear = int.tryParse(value) ?? 0;
 
-        if (birthYear > DateTime.now().year || birthYear < 1900) {
-          return AppLocalizations.of(context).userFormBirthdayYearValidationLabel;
-        }
+          if (birthYear > DateTime.now().year || birthYear < 1900) {
+            return AppLocalizations.of(context).userFormBirthYearValidationLabel;
+          }
 
-        return null;
-      },
-      keyboardType: TextInputType.number,
-      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-      maxLength: 4,
-      maxLines: 1,
-      textAlign: TextAlign.center,
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(), 
-        labelText: AppLocalizations.of(context).userFormBirthdayYearLabel,
-        filled: true,
-        fillColor: Colors.white,
+          return null;
+        },
+        keyboardType: TextInputType.number,
+        inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+        maxLength: 4,
+        maxLines: 1,
+        textAlign: TextAlign.center,
+        decoration: InputDecoration(
+          counterText: "",
+          border: const UnderlineInputBorder(), 
+          labelText: AppLocalizations.of(context).userFormBirthYearLabel,
+          hintText: '',
+          hintStyle: const TextStyle(
+            height: 2.0,
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
       ),
     );
   }
 }
 
-class _AverageMonthlyIncomeInput extends StatelessWidget {
-  const _AverageMonthlyIncomeInput({
-    this.initialValue = '',
+// TODO: jeśli pojawią się rózne waluty, mozna dodać nizej pola przeliczenie względem zarobkowej waluty (cos alla error label)
+// pewnie do wyliczenia przy walidacji
+
+class _AverageIncomeInput extends StatelessWidget {
+  const _AverageIncomeInput({
+    this.initialIncomeValue,
+    this.initialCurrencyValue,
   });
   
-  final String initialValue;
+  final String? initialIncomeValue;
+  final String? initialCurrencyValue;
 
   @override
   Widget build(BuildContext context) {
-    return TextFormField(
-      key: const Key('userForm_avgMonthlyIncome_textFormField'),
-      initialValue: initialValue,
-      onChanged: (value) {
-        if (value != initialValue) {
-          context.read<UserFormBloc>().add(UserFormAverageMonthlyIncomeChanged(double.tryParse(value) ?? 0.0));
-        }
-      },
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return AppLocalizations.of(context).userFormAvgMonthlyIncomeValidationLabel;
-        }
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0) , 
+      child: Row(
+        children: <Widget>[
+          Flexible(
+            flex: 2,
+            child: TextFormField(
+              key: const Key('userForm_averageIncome_textFormField'),
+              initialValue: initialIncomeValue,
+              onChanged: (value) {
+                if (value != initialIncomeValue) {
+                  context.read<UserFormBloc>().add(UserFormAverageMonthlyIncomeChanged(double.tryParse(value) ?? 0.0));
+                }
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return AppLocalizations.of(context).userFormAverageIncomeValidationLabel;
+                }
 
-        final income = double.tryParse(value) ?? 0.0;
+                final income = double.tryParse(value) ?? 0.0;
 
-        if (income <= 1.0 || income > 500000.0) {
-          return AppLocalizations.of(context).userFormAvgMonthlyIncomeValidationLabel;
-        }
+                if (income <= 1.0 || income > 500000.0) {
+                  return AppLocalizations.of(context).userFormAverageIncomeValidationLabel;
+                }
 
-        return null;
-      },
-      keyboardType: TextInputType.number,
-      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-      maxLength: 10,
-      maxLines: 1,
-      textAlign: TextAlign.center,
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(), 
-        labelText: AppLocalizations.of(context).userFormAvgMonthlyIncomeLabel,
-        filled: true,
-        fillColor: Colors.white,
+                return null;
+              },
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              maxLength: 10,
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              strutStyle: const StrutStyle(
+                height: 1.5,
+              ),
+              decoration: InputDecoration(
+                counterText: "",
+                border: const UnderlineInputBorder(), 
+                labelText: AppLocalizations.of(context).userFormAverageIncomeLabel,
+                hintText: '',
+                hintStyle: const TextStyle(
+                  height: 2.0,
+                ),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+          ),
+          const SizedBox(width: 16.0),
+          Flexible(
+            flex: 1,
+            child: _CurrencyDropdownButton(initialValue: initialCurrencyValue),
+          ),
+        ],
       ),
     );
   }
 }
 
-// TODO: wycentrować
-// dodać reakcję gdy istnieje initial value - błąd mówi, ze dana powtarza sie dwa razy?
-class _IncomeCurrencyDropdownButton extends StatelessWidget {
-  _IncomeCurrencyDropdownButton({
-    this.initialValue = '',
+class _FreeCapitalInput extends StatelessWidget {
+  const _FreeCapitalInput({
+    this.initialCapitalValue,
+    this.initialCurrencyValue,
   });
   
-  final String initialValue;
+  final String? initialCapitalValue;
+  final String? initialCurrencyValue;
+
+  @override
+  Widget build(BuildContext context) {
+    final double avgMonthlyIncome = context.select((UserFormBloc bloc) => bloc.state.avgMonthlyIncome);
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0), 
+      child: Row(
+        children: <Widget>[
+          Flexible(
+            flex: 2,
+            child: TextFormField(
+              key: const Key('userForm_freeCapital_textFormField'),
+              initialValue: initialCapitalValue,
+              onChanged: (value) {
+                if (value != initialCapitalValue) {
+                  context.read<UserFormBloc>().add(UserFormFreeAmountChanged(double.tryParse(value) ?? 0.0));
+                }
+              },
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return AppLocalizations.of(context).userFormFreeCapitalValidationLabel;
+                }
+
+                final double freeAmount = double.tryParse(value) ?? 0.0;
+
+                if (freeAmount < 1.0) {
+                  return AppLocalizations.of(context).userFormFreeCapitalValidationLabel;
+                }
+
+                if (avgMonthlyIncome > 0 && freeAmount > avgMonthlyIncome) {
+                  return AppLocalizations.of(context).userFormFreeCapitalValidationLabel;
+                }
+
+                return null;
+              },
+              keyboardType: TextInputType.number,
+              inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+              maxLength: 10,
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              strutStyle: const StrutStyle(
+                height: 1.5,
+              ),
+              decoration: InputDecoration(
+                counterText: "",
+                border: const UnderlineInputBorder(), 
+                labelText: AppLocalizations.of(context).userFormFreeCapitalLabel,
+                hintText: '',
+                hintStyle: const TextStyle(
+                  height: 2.0,
+                ),
+                filled: true,
+                fillColor: Colors.white,
+              ),
+            ),
+          ),
+
+          const SizedBox(width: 16.0),
+
+          Flexible(
+            flex: 1,
+            child: _CurrencyDropdownButton(initialValue: initialCurrencyValue),
+          ),
+        ],
+      ),
+    ); 
+  }
+}
+
+class _CurrencyDropdownButton extends StatelessWidget {
+  _CurrencyDropdownButton({
+    this.initialValue,
+  });
+  
+  final String? initialValue;
   final List<String> currencyOptions = [
     Currency.pln,
     Currency.eur,
@@ -219,84 +338,73 @@ class _IncomeCurrencyDropdownButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DropdownButtonFormField(
-      key: const Key('userForm_incomeCurrency_dropdownBtnFormField'),
-      items: currencyOptions.map(
-        (curr) => DropdownMenuItem(
-          alignment: AlignmentDirectional.center,
-          value: curr,
-          child: Text(curr),
-        )).toList(),
-      onChanged: (value) {
-        context.read<UserFormBloc>().add(UserFormIncomeCurrencyChanged(value!));
-      },
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return AppLocalizations.of(context).userFormIncomeCurrencyValidationLabel;
-        }
-        return null;
-      },
-      alignment: Alignment.center,
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(), 
-        labelText: AppLocalizations.of(context).userFormIncomeCurrencyLabel,
-        filled: true,
-        fillColor: Colors.white,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0) , 
+      child: DropdownButtonFormField(
+        key: const Key('userForm_currency_dropdownBtnFormField'),
+        value: initialValue,
+        items: currencyOptions.map(
+          (curr) => DropdownMenuItem(
+            alignment: AlignmentDirectional.center,
+            value: curr,
+            child: Text(
+              curr,
+              strutStyle: const StrutStyle(height: 1.5),
+            ),
+          )).toList(),
+        onChanged: (value) {
+          context.read<UserFormBloc>().add(UserFormIncomeCurrencyChanged(value!));
+        },
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return AppLocalizations.of(context).userFormCurrencyValidationLabel;
+          }
+          return null;
+        },
+        alignment: Alignment.center,
+        decoration: InputDecoration(
+          border: const UnderlineInputBorder(), 
+          labelText: AppLocalizations.of(context).userFormCurrencyLabel,
+          hintText: '',
+          hintStyle: const TextStyle(
+            height: 2.0,
+          ),
+          filled: true,
+          fillColor: Colors.white,
+        ),
       ),
     );
   }
 }
 
-class _FreeMoneyAmountInput extends StatelessWidget {
-  const _FreeMoneyAmountInput({
-      this.initialValue = '',
-  });
-  
-  final String initialValue;
+// TODO: czy na pewno formkey moze byc przesylany do widgetu?
+class _SubmitButton extends StatelessWidget {
+  const _SubmitButton(this.formKey);
+
+  final GlobalKey<FormState> formKey;
 
   @override
   Widget build(BuildContext context) {
-    final double avgMonthlyIncome = context.select((UserFormBloc bloc) => bloc.state.avgMonthlyIncome);
-
-    return TextFormField(
-      key: const Key('userForm_freeMoneyAmount_textFormField'),
-      initialValue: initialValue,
-      onChanged: (value) {
-        if (value != initialValue) {
-          context.read<UserFormBloc>().add(UserFormFreeAmountChanged(double.tryParse(value) ?? 0.0));
+    return ElevatedButton(
+      onPressed: () {
+        formKey.currentState?.save();
+        if (formKey.currentState!.validate()) {
+          context.read<UserFormBloc>().add(const UserFormSubmitted());
         }
       },
-      validator: (value) {
-        if (value == null || value.isEmpty) {
-          return AppLocalizations.of(context).userFormFreeAmountValidationLabel;
-        }
-
-        final double freeAmount = double.tryParse(value) ?? 0.0;
-
-        if (freeAmount < 1.0) {
-          return AppLocalizations.of(context).userFormFreeAmountValidationLabel;
-        }
-
-        if (avgMonthlyIncome > 0 && freeAmount > avgMonthlyIncome) {
-          return AppLocalizations.of(context).userFormFreeAmountValidationLabel;
-        }
-
-        return null;
-      },
-      keyboardType: TextInputType.number,
-      inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-      maxLength: 10,
-      maxLines: 1,
-      textAlign: TextAlign.center,
-      decoration: InputDecoration(
-        border: const OutlineInputBorder(), 
-        labelText: AppLocalizations.of(context).userFormFreeAmountLabel,
-        filled: true,
-        fillColor: Colors.white,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: Color.fromARGB(255, 202, 202, 202),
+        minimumSize: const Size(double.infinity, 50),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(0),
+        ),
+        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 4.0),
       ),
+      child: Text(AppLocalizations.of(context).userFormSubmitButton),
     );
   }
 }
+
 
 // TODO: validation
 // Padding(
