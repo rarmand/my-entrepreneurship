@@ -6,7 +6,9 @@
   "menuBtnBudgetLabel": "Budżet",
   "menuBtnUserLabel": "Użytkownik",
   "menuBtnMoreLabel": "Więcej",
+
   "userFormTitle": "Formularz danych użytkownika",
+  "userFormActionCancelTooltip": "Anuluj",
   "userFormUsernameLabel": "Nazwa użytkownika",
   "userFormUsernameValidationLabel": "Proszę podaj prawidłową nazwę użytkownika",
   "userFormBirthYearLabel": "Rok urodzenia",
@@ -21,6 +23,7 @@
   "userFormFreeCapitalValidationLabel": "Proszę podaj prawidłową kwotę",
   "userFormSubmitButton": "Zatwierdź",
   "userFormProcessingInfo": "Przesyłanie...",
+  
   "userProfileTitle": "Profil użytkownika",
   "userProfileActionChangeModeTooltip": "Zmień tryb",
   "userProfileActionEditProfileTooltip": "Edytuj profil",

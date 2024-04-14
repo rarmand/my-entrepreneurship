@@ -9,7 +9,9 @@
   "menuBtnBudgetLabel": "Budget",
   "menuBtnUserLabel": "User",
   "menuBtnMoreLabel": "More",
+
   "userFormTitle": "User data form",
+  "userFormActionCancelTooltip": "Cancel",
   "userFormUsernameLabel": "Username",
   "userFormUsernameValidationLabel": "Please enter valid username",
   "userFormBirthYearLabel": "Birth year",
@@ -24,6 +26,7 @@
   "userFormFreeCapitalValidationLabel": "Please enter valid Capital",
   "userFormSubmitButton": "Submit",
   "userFormProcessingInfo": "Processing...",
+
   "userProfileTitle": "User profile",
   "userProfileActionChangeModeTooltip": "Change view mode",
   "userProfileActionEditProfileTooltip": "Edit profile",
