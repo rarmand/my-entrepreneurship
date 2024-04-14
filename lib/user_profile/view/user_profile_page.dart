@@ -39,14 +39,14 @@ class UserProfilePage extends StatelessWidget {
         child: Container(
           alignment: Alignment.topCenter,
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
                 const CircleAvatar(
                   radius: 100.0,
                   backgroundColor: Colors.orange,
                 ),
-                const SizedBox(height: 10.0),
+                const SizedBox(height: 24.0),
 
                 Column(
                   children: [
@@ -86,6 +86,8 @@ class UserProfilePage extends StatelessWidget {
                         ),
                       ),
                     ),
+
+                    const SizedBox(height: 24.0),
 
                     TextFormField(
                       initialValue: "8000 PLN",
