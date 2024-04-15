@@ -37,7 +37,6 @@ class _UserFormState extends State<UserForm> {
       builder: (context, state) {
         return Form(
           key: _formKey,
-          // autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Scaffold(
             appBar: AppBar(
               leading: IconButton(
@@ -67,7 +66,7 @@ class _UserFormState extends State<UserForm> {
               ),
             ),
             bottomNavigationBar: Padding(
-              padding: const EdgeInsets.all(20),
+              padding: const EdgeInsets.symmetric(vertical: 48, horizontal: 24),
               child: _SubmitButton(_formKey),
             ),
           ), 
