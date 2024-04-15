@@ -32,6 +32,7 @@ class _UserFormState extends State<UserForm> {
     // final status = context.select((UserFormBloc bloc) => bloc.state.status);
     // final isNewUser = context.select((UserFormBloc bloc) => bloc.state.status);
 
+    // TODO: check if new user or else doesnt show cancel button?
     return BlocBuilder<UserFormBloc, UserFormState>(
       builder: (context, state) {
         return Form(
@@ -43,6 +44,7 @@ class _UserFormState extends State<UserForm> {
                 tooltip: AppLocalizations.of(context).userFormActionCancelTooltip,
                 onPressed: () {
                   context.read<UserFormBloc>().add(const UserFormCancelled());
+                  Navigator.pop(context);
                 },
                 icon: const Icon(Icons.close),
               ),

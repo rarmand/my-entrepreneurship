@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_entrepreneurship/l10n/l10n.dart';
+import 'package:my_entrepreneurship/user_form/user_form.dart';
 
 
 class UserProfilePage extends StatelessWidget {
@@ -29,8 +30,10 @@ class UserProfilePage extends StatelessWidget {
             icon: const Icon(Icons.edit),
             tooltip: AppLocalizations.of(context).userProfileActionEditProfileTooltip,
             onPressed: () {
-              // TODO: navigate to edition profile view
-              // TODO: change theme set
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const UserForm()),
+              );
             }, 
           ),
         ],
