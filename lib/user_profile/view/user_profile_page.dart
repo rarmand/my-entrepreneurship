@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:my_entrepreneurship/l10n/l10n.dart';
+import 'package:my_entrepreneurship/theme/theme.dart';
 import 'package:my_entrepreneurship/user_form/user_form.dart';
+import 'package:provider/provider.dart';
 
 
 class UserProfilePage extends StatelessWidget {
@@ -22,8 +24,7 @@ class UserProfilePage extends StatelessWidget {
             icon: Icon(isViewDark ? Icons.light_mode : Icons.dark_mode),
             tooltip: AppLocalizations.of(context).userProfileActionChangeModeTooltip,
             onPressed: () {
-              // TODO: change view mode
-              // TODO: change theme set
+              Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
             }, 
           ),
           IconButton(
