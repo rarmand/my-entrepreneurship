@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_entrepreneurship/base/cubit/base_cubit.dart';
 import 'package:my_entrepreneurship/budget/view/view.dart';
 import 'package:my_entrepreneurship/home/home.dart';
-import 'package:my_entrepreneurship/l10n/l10n.dart';
 import 'package:my_entrepreneurship/menu/menu.dart';
 import 'package:my_entrepreneurship/user_form/user_form.dart';
 import 'package:my_entrepreneurship/user_profile/user_profile.dart';
@@ -24,6 +23,7 @@ class BaseView extends StatelessWidget {
         )
       ], 
       child: Scaffold(
+        backgroundColor: Theme.of(context).colorScheme.background,
         body: IndexedStack(
           index: selectedPageIndex,
           children: const [

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ColorConstants {
   static Color black = const Color.fromARGB(255, 25, 36, 40);
