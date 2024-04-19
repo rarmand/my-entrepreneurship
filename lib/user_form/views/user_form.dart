@@ -106,14 +106,8 @@ class _UsernameInput extends StatelessWidget {
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           counterText: "",
-          border: const UnderlineInputBorder(), 
           labelText: AppLocalizations.of(context).userFormUsernameLabel,
           hintText: '',
-          hintStyle: const TextStyle(
-            height: 2.0,
-          ),
-          filled: true,
-          fillColor: Colors.white,
         ),
       ),
     );
@@ -159,14 +153,8 @@ class _BirthYearInput extends StatelessWidget {
         textAlign: TextAlign.center,
         decoration: InputDecoration(
           counterText: "",
-          border: const UnderlineInputBorder(), 
           labelText: AppLocalizations.of(context).userFormBirthYearLabel,
           hintText: '',
-          hintStyle: const TextStyle(
-            height: 2.0,
-          ),
-          filled: true,
-          fillColor: Colors.white,
         ),
       ),
     );
@@ -224,14 +212,8 @@ class _AverageIncomeInput extends StatelessWidget {
               ),
               decoration: InputDecoration(
                 counterText: "",
-                border: const UnderlineInputBorder(), 
                 labelText: AppLocalizations.of(context).userFormAverageIncomeLabel,
                 hintText: '',
-                hintStyle: const TextStyle(
-                  height: 2.0,
-                ),
-                filled: true,
-                fillColor: Colors.white,
               ),
             ),
           ),
@@ -299,15 +281,9 @@ class _FreeCapitalInput extends StatelessWidget {
                 height: 1.5,
               ),
               decoration: InputDecoration(
-                counterText: "",
-                border: const UnderlineInputBorder(), 
+                counterText: '',
                 labelText: AppLocalizations.of(context).userFormFreeCapitalLabel,
                 hintText: '',
-                hintStyle: const TextStyle(
-                  height: 2.0,
-                ),
-                filled: true,
-                fillColor: Colors.white,
               ),
             ),
           ),
@@ -364,14 +340,8 @@ class _CurrencyDropdownButton extends StatelessWidget {
         },
         alignment: Alignment.center,
         decoration: InputDecoration(
-          border: const UnderlineInputBorder(), 
           labelText: AppLocalizations.of(context).userFormCurrencyLabel,
           hintText: '',
-          hintStyle: const TextStyle(
-            height: 2.0,
-          ),
-          filled: true,
-          fillColor: Colors.white,
         ),
       ),
     );
@@ -393,14 +363,6 @@ class _SubmitButton extends StatelessWidget {
           context.read<UserFormBloc>().add(const UserFormSubmitted());
         }
       },
-      style: ElevatedButton.styleFrom(
-        backgroundColor: Color.fromARGB(255, 202, 202, 202),
-        minimumSize: const Size(double.infinity, 50),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(0),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 4.0),
-      ),
       child: Text(AppLocalizations.of(context).userFormSubmitButton),
     );
   }

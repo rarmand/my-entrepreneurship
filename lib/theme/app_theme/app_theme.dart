@@ -18,9 +18,41 @@ class AppTheme {
     return ThemeData(
       brightness: Brightness.light,
       colorScheme: ColorScheme.light(
-        background: Colors.grey.shade400,
-        primary: Colors.green.shade700,
-        secondary: Colors.blue.shade500,
+        background: ColorConstants.white,
+        primary: ColorConstants.blue,
+        secondary: ColorConstants.lightBlue,
+      ),
+      
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>( 
+            ColorConstants.black
+          ),
+          minimumSize: MaterialStateProperty.all<Size>(Size(double.infinity, 50)),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+          ),
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+            const EdgeInsets.symmetric(vertical: 16.0, horizontal: 4.0)
+          ),
+        ),
+      ),
+      
+      inputDecorationTheme: InputDecorationTheme(
+        labelStyle: TextStyle(
+          color: ColorConstants.black,
+        ),
+        errorStyle: const TextStyle(
+          color: Colors.redAccent,
+        ),
+        border: const UnderlineInputBorder(),
+        hintStyle: const TextStyle(
+          height: 2.0
+        ),
+        filled: true,
+        fillColor: ColorConstants.white,
       ),
     );
   }
@@ -29,9 +61,41 @@ class AppTheme {
     return ThemeData(
       brightness: Brightness.dark,
       colorScheme: ColorScheme.dark(
-        background: Colors.grey.shade900,
-        primary: Colors.green.shade600,
-        secondary: Colors.blue.shade700,
+        background: ColorConstants.lightBlack,
+        primary: ColorConstants.white,
+        secondary: ColorConstants.cream,
+      ),
+
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>( 
+            ColorConstants.beige
+          ),
+          minimumSize: MaterialStateProperty.all<Size>(Size(double.infinity, 50)),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20.0),
+            ),
+          ),
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
+            const EdgeInsets.symmetric(vertical: 16.0, horizontal: 4.0)
+          ),
+        ),
+      ),
+
+      inputDecorationTheme: InputDecorationTheme(
+        labelStyle: TextStyle(
+          color: ColorConstants.white,
+        ),
+        errorStyle: const TextStyle(
+          color: Colors.redAccent,
+        ),
+        border: const UnderlineInputBorder(),
+        hintStyle: const TextStyle(
+          height: 2.0
+        ),
+        filled: true,
+        fillColor: ColorConstants.lightBlack,
       ),
     );
   }
