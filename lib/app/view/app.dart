@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_entrepreneurship/app/view/app_view.dart';
+import 'package:my_entrepreneurship/theme/provider/theme_provider.dart';
 import 'package:my_entrepreneurship/user_form/bloc/user_form_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:user_repository/user_repository.dart';
 
 class App extends StatelessWidget {
@@ -26,8 +28,15 @@ class App extends StatelessWidget {
           ),
         ],
       
-        child: const AppView(),
-      )
+        child: MultiProvider(
+          providers: [
+            ChangeNotifierProvider(
+              create: (context) => ThemeProvider(),
+            ),
+          ],
+          child: const AppView(),
+        ),
+      ),
     );
   }
 }

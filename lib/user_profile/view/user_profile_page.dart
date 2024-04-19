@@ -10,8 +10,8 @@ class UserProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isViewDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
-
+    bool isDarkMode = Provider.of<ThemeProvider>(context).isDarkMode;
+    
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -21,7 +21,7 @@ class UserProfilePage extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            icon: Icon(isViewDark ? Icons.light_mode : Icons.dark_mode),
+            icon: Icon(isDarkMode ? Icons.light_mode : Icons.dark_mode),
             tooltip: AppLocalizations.of(context).userProfileActionChangeModeTooltip,
             onPressed: () {
               Provider.of<ThemeProvider>(context, listen: false).toggleTheme();
