@@ -67,4 +67,5 @@ class DefaultFirebaseOptions {
     storageBucket: 'my-entrepreneurship.appspot.com',
     iosBundleId: 'com.project.myEntrepreneurship',
   );
+
 }
