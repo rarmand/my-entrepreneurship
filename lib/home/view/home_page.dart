@@ -5,8 +5,22 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(child: Text("Home page")),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Dashboard'),
+      ),
+      body: SingleChildScrollView(
+        child: Container(
+          alignment: Alignment.topCenter,
+          child: const Column(
+            children: [
+              Text('Najblizsze zadania i wydarzenia'),
+              SizedBox(height: 24.0),
+              Text('Doprecyzowanie czego jeszcze brakuje'),
+            ],
+          ),
+        ),
+      ),
     );
   } 
 }
