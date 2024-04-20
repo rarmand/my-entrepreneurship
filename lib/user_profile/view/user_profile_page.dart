@@ -17,7 +17,6 @@ class UserProfilePage extends StatelessWidget {
         centerTitle: true,
         title: Text(
           AppLocalizations.of(context).userProfileTitle,
-          style: Theme.of(context).textTheme.titleLarge,
         ),
         actions: [
           IconButton(
