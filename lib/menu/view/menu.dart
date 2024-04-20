@@ -20,11 +20,11 @@ class Menu extends StatelessWidget {
       
       destinations: <NavigationDestination>[
         NavigationDestination(
-          icon: const Icon(Icons.home),
+          icon: const Icon(Icons.business_center),
           label: AppLocalizations.of(context).menuBtnHomeLabel,
         ),
         NavigationDestination(
-          icon: const Icon(Icons.business_center),
+          icon: const Icon(Icons.savings),
           label: AppLocalizations.of(context).menuBtnSavingsLabel,
         ),
         NavigationDestination(
