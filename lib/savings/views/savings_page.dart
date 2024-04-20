@@ -1,3 +1,4 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class SavingsPage extends StatelessWidget {
@@ -5,6 +6,33 @@ class SavingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    PieChartData data = PieChartData(
+      centerSpaceRadius: 24.0,
+      sectionsSpace: 1,
+      sections: <PieChartSectionData>[
+        PieChartSectionData(
+          title: 'Obligacje skarbowe',
+          value: 10000,
+          color: Colors.yellow,
+        ),
+        PieChartSectionData(
+          title: 'Lokata',
+          value: 30000,
+          color: Colors.green,
+        ),
+        PieChartSectionData(
+          title: 'Kryptowaluty',
+          value: 5000,
+          color: Colors.blue,
+        ),
+        PieChartSectionData(
+          title: 'Akcje giełdowe',
+          value: 6000,
+          color: Colors.red,
+        ),
+      ],
+    );
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Savings'),
@@ -19,15 +47,28 @@ class SavingsPage extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Container(
-          alignment: Alignment.topCenter,
-          child: const Column(
+        child: AspectRatio(
+          aspectRatio: 16/9,
+          child: Column(
             children: [
-              Text('Diagram'),
-              SizedBox(height: 24.0),
-              Text('Tabelka z danymi'),
-              SizedBox(height: 24.0),
-              Text('Doprecyzowanie czego jeszcze brakuje'),
+              Expanded(
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: PieChart(
+                    data,
+                    swapAnimationDuration: const Duration(milliseconds: 150),
+                    swapAnimationCurve: Curves.linear,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 24.0),
+              
+              // TODO: list of indicators?
+
+              const SizedBox(height: 24.0),
+              const Text('Tabelka z danymi'),
+              const SizedBox(height: 24.0),
+              const Text('Doprecyzowanie czego jeszcze brakuje'),
             ],
           ),
         ),
