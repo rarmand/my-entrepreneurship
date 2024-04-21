@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class ColorConstants {
   static Color black = const Color.fromARGB(255, 25, 36, 40);
@@ -23,6 +24,19 @@ class AppTheme {
         secondary: ColorConstants.lightBlue,
       ),
       
+      textTheme: TextTheme(
+        displayLarge: const TextStyle(
+          fontSize: 72,
+          fontWeight: FontWeight.bold,
+        ),
+        // ···
+        titleLarge: GoogleFonts.raleway(
+          fontSize: 30,
+        ),
+        bodyMedium: GoogleFonts.dmSans(),
+        displaySmall: GoogleFonts.merriweather(),
+      ),
+
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>( 
@@ -64,6 +78,18 @@ class AppTheme {
         background: ColorConstants.lightBlack,
         primary: ColorConstants.white,
         secondary: ColorConstants.cream,
+      ),
+
+      textTheme: TextTheme(
+        displayLarge: const TextStyle(
+          fontSize: 72,
+          fontWeight: FontWeight.bold,
+        ),
+        titleLarge: GoogleFonts.rubik(
+          fontSize: 30,
+        ),
+        bodyMedium: GoogleFonts.raleway(),
+        displaySmall: GoogleFonts.pacifico(),
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
