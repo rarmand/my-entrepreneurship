@@ -35,6 +35,7 @@ class AppTheme {
         ),
         bodyMedium: GoogleFonts.dmSans(),
         displaySmall: GoogleFonts.merriweather(),
+        labelMedium: GoogleFonts.merriweather(),
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
