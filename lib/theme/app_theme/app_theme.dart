@@ -30,12 +30,12 @@ class AppTheme {
           fontWeight: FontWeight.bold,
         ),
         // ···
-        titleLarge: GoogleFonts.raleway(
+        titleLarge: GoogleFonts.alegreyaSansSc( // to jest ok
           fontSize: 30,
         ),
-        bodyMedium: GoogleFonts.dmSans(),
-        displaySmall: GoogleFonts.merriweather(),
-        labelMedium: GoogleFonts.merriweather(),
+        bodyMedium: GoogleFonts.rubik(), // lub raleway
+        displaySmall: GoogleFonts.dmSans(), // zła czcionka dla liczb
+        labelMedium: GoogleFonts.rubik(),
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -86,11 +86,11 @@ class AppTheme {
           fontSize: 72,
           fontWeight: FontWeight.bold,
         ),
-        titleLarge: GoogleFonts.rubik(
+        titleLarge: GoogleFonts.alegreyaSansSc(
           fontSize: 30,
         ),
         bodyMedium: GoogleFonts.raleway(),
-        displaySmall: GoogleFonts.pacifico(),
+        displaySmall: GoogleFonts.rubik(),
       ),
 
       elevatedButtonTheme: ElevatedButtonThemeData(
