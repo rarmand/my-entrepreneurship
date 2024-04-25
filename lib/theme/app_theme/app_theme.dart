@@ -29,9 +29,8 @@ class AppTheme {
           fontSize: 72,
           fontWeight: FontWeight.bold,
         ),
-        // ···
         titleLarge: GoogleFonts.alegreyaSansSc( // to jest ok
-          fontSize: 30,
+          fontSize: 28,
         ),
         bodyMedium: GoogleFonts.rubik(), // lub raleway
         displaySmall: GoogleFonts.dmSans(), // zła czcionka dla liczb
@@ -43,7 +42,7 @@ class AppTheme {
           backgroundColor: MaterialStateProperty.all<Color>( 
             ColorConstants.black
           ),
-          minimumSize: MaterialStateProperty.all<Size>(Size(double.infinity, 50)),
+          minimumSize: MaterialStateProperty.all<Size>(const Size(double.infinity, 50)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
@@ -87,7 +86,7 @@ class AppTheme {
           fontWeight: FontWeight.bold,
         ),
         titleLarge: GoogleFonts.alegreyaSansSc(
-          fontSize: 30,
+          fontSize: 28,
         ),
         bodyMedium: GoogleFonts.raleway(),
         displaySmall: GoogleFonts.rubik(),
@@ -98,7 +97,7 @@ class AppTheme {
           backgroundColor: MaterialStateProperty.all<Color>( 
             ColorConstants.beige
           ),
-          minimumSize: MaterialStateProperty.all<Size>(Size(double.infinity, 50)),
+          minimumSize: MaterialStateProperty.all<Size>(const Size(double.infinity, 50)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(20.0),
