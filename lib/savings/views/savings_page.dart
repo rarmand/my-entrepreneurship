@@ -1,5 +1,6 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
+import 'package:my_entrepreneurship/l10n/l10n.dart';
 
 class SavingsPage extends StatelessWidget {
   const SavingsPage({super.key});
@@ -43,7 +44,7 @@ class SavingsPage extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Savings'),
+        title: Text(AppLocalizations.of(context).savingsTitle),
         centerTitle: true,
         actions: [
           IconButton(
@@ -51,7 +52,7 @@ class SavingsPage extends StatelessWidget {
               print('add new saving clicked');
             }, 
             icon: const Icon(Icons.add),
-            tooltip: 'Add new saving',
+            tooltip: AppLocalizations.of(context).savingsAddNewTooltip,
           )
         ],
       ),
@@ -60,18 +61,18 @@ class SavingsPage extends StatelessWidget {
           alignment: Alignment.topCenter,
           child: Column(
             children: [
-              const Padding(
-                padding: EdgeInsets.symmetric(vertical: 16.0), 
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 16.0), 
                 child: Column(
                   children: [
                     Text(
-                      'Free capital',
-                      style: TextStyle(
+                      AppLocalizations.of(context).savingsFreeCapitalText,
+                      style: const TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Text(
+                    const Text(
                       '$freeCapital $currency',
                       style: TextStyle(
                         fontSize: 24.0,

@@ -30,5 +30,14 @@
   "userProfileUsernameHelperText": "Nazwa użytkownika",
   "userProfileBirthYearHelperText": "Rok urodzenia",
   "userProfileAverageIncomeHelperText": "Średni miesięczny dochód netto",
-  "userProfileFreeCapitalHelperText": "Miesięczny wolny kapitał"
+  "userProfileFreeCapitalHelperText": "Miesięczny wolny kapitał",
+
+  "savingsTitle": "Oszczędności",
+  "savingsAddNewTooltip": "Dodaj oszczędność",
+  "savingsFreeCapitalText": "Wolny kapitał",
+
+  "dashboardTitle": "Strona główna",
+
+  "budgetTitle": "Budżet",
+  "budgetAddNewTooltip": "Dodaj nowy element"
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_entrepreneurship/l10n/l10n.dart';
 
 class BudgetPage extends StatelessWidget {
   const BudgetPage({super.key});
@@ -7,14 +8,14 @@ class BudgetPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Budget'),
+        title: Text(AppLocalizations.of(context).budgetTitle),
         actions: [
           IconButton(
             onPressed: () {
               print('add new clicked');
             }, 
             icon: const Icon(Icons.add),
-            tooltip: 'Add new budget element',
+            tooltip: AppLocalizations.of(context).budgetAddNewTooltip,
           )
         ],
       ),

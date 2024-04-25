@@ -33,5 +33,14 @@
   "userProfileUsernameHelperText": "Username",
   "userProfileBirthYearHelperText": "Birth year",
   "userProfileAverageIncomeHelperText": "Average monthly net income",
-  "userProfileFreeCapitalHelperText": "Monthly free capital"
+  "userProfileFreeCapitalHelperText": "Monthly free capital",
+
+  "savingsTitle": "Savings",
+  "savingsAddNewTooltip": "Add new saving",
+  "savingsFreeCapitalText": "Free capital",
+
+  "dashboardTitle": "Dashboard",
+
+  "budgetTitle": "Budget",
+  "budgetAddNewTooltip": "Add new element"
 }

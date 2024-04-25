@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_entrepreneurship/l10n/l10n.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -7,7 +8,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Dashboard'),
+        title: Text(AppLocalizations.of(context).dashboardTitle),
       ),
       body: SingleChildScrollView(
         child: Container(
