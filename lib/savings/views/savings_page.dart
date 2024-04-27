@@ -22,6 +22,7 @@ class SavingsPage extends StatelessWidget {
       {'name': 'kryptowaluty', 'value': 15000.0, 'color': Colors.lightGreen},
     ];
 
+    // TODO: ustalić kolory dla róznych flag
     List<PieChartSectionData> generateSections() {
       return data.map((obj) {
         return PieChartSectionData(
@@ -76,7 +77,7 @@ class SavingsPage extends StatelessWidget {
                       '$freeCapital $currency',
                       style: TextStyle(
                         fontSize: 24.0,
-                        fontWeight: FontWeight.w700,
+                        fontWeight: FontWeight.w600,
                       ), 
                     ),
                   ],
@@ -101,6 +102,8 @@ class SavingsPage extends StatelessWidget {
 
               const SizedBox(height: 24.0),
               const Text('Tabelka z danymi'),
+              const SizedBox(height: 24.0),
+              const Text('Doprecyzowanie czego jeszcze brakuje'),
               const SizedBox(height: 24.0),
               const Text('Doprecyzowanie czego jeszcze brakuje'),
             ],
