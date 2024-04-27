@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_entrepreneurship/base/cubit/base_cubit.dart';
 // import 'package:my_entrepreneurship/budget/view/view.dart';
-import 'package:my_entrepreneurship/home/home.dart';
+import 'package:my_entrepreneurship/dashboard/dashboard.dart';
+import 'package:my_entrepreneurship/dashboard/view/dashboard_page.dart';
 import 'package:my_entrepreneurship/menu/menu.dart';
 import 'package:my_entrepreneurship/savings/views/savings_page.dart';
 import 'package:my_entrepreneurship/user_form/user_form.dart';
@@ -28,7 +29,7 @@ class BaseView extends StatelessWidget {
         body: IndexedStack(
           index: selectedPageIndex,
           children: const [
-            HomePage(),
+            DashboardPage(),
             SavingsPage(),
             // BudgetPage(),
             UserProfilePage(),
